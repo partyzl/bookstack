@@ -12,7 +12,7 @@ class UserRegistration(serializers.ModelSerializer):
         fields = ("username", "email", "password", "password_confirmation")
         write_only_fields = ('password', 'password_confirmation')
     
-    def create(self, validated_data);
+    def create(self, validated_data):
         user = User.objects.create(
             username=validated_data['username'],
             email = validated_data['email']
