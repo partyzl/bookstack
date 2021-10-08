@@ -1,16 +1,19 @@
 import "./App.css";
 import { Switch, Route } from "react-router-dom";
+import { Home, ToBeRead } from "./pages";
 
 function App() {
   return (
     <div className="App">
-      <NavBar>
-        <Switch>
-          <Route exact path="/">
-            <Home />
-          </Route>
+      <Switch>
+        <Route exact path="/">
+          <Home />
+        </Route>
+        <Route exact path="/toberead">
+          <ToBeRead />
+        </Route>
 
-          <Route path="/search">
+        {/* <Route path="/search">
             <Search />
           </Route>
 
@@ -22,11 +25,14 @@ function App() {
             <Profile />
           </Route>
 
+          <Route path="/">
+            < />
+          </Route>
+
           <Route>
             <NotFound404 />
-          </Route>
-        </Switch>
-      </NavBar>
+          </Route> */}
+      </Switch>
     </div>
   );
 }
