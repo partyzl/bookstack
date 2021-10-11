@@ -1,6 +1,6 @@
 import "./App.css";
 import { Switch, Route } from "react-router-dom";
-import { Home, ToBeRead } from "./pages";
+import { Home } from "./pages";
 import { BookContextProvider } from "./context/bookContext";
 
 function App() {
@@ -11,17 +11,22 @@ function App() {
           <Route exact path="/">
             <Home />
           </Route>
+          {/* Library Routes*/}
+          {/* <Route path="/library">
+            <Library />
+          </Route>
+          <Route path="/completedreads">
+            <CompletedReads />
+          </Route>
           <Route exact path="/toberead">
             <ToBeRead />
-          </Route>
+          </Route> */}
 
           {/* <Route path="/search">
             <Search />
           </Route>
 
-          <Route path="/library">
-            <Library />
-          </Route>
+          
 
           <Route path="/profile">
             <Profile />

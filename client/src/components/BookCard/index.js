@@ -1,15 +1,16 @@
 import React from "react";
 import "./styles.css";
 
-const BookCard = ({ title, cover, genre, publish }) => {
+const BookCard = ({ key, title, author, genre, published }) => {
+  console.log(genre, published);
   return (
-    <div id="card">
-      <p className="bookTitle">{title}</p>
-
-      <span className="cover">{cover}</span>
-      <div id="details">
-        <p>Genre: {genre}</p>
-        <p>Publish {publish}</p>
+    <div className="card" id={key}>
+      {/* <img src={image} class="card-img-top" alt={title} /> */}
+      <div className="card-body">
+        <h5 className="title">{title}</h5>
+        <p className="details">{author}</p>
+        <p className="details">{genre}</p>
+        <p className="details">{published}</p>
       </div>
     </div>
   );
