@@ -4,13 +4,15 @@ from .models import Profile
 from .serializers import ProfileSerializer
 from rest_framework import status
 from django.http import Http404
+from django.contrib.auth.models import User
 
 # Create your views here.
 class Profiles(APIView):
     
     def get_object(self, username):
         try:
-           return Profile.objects.get(username=username)
+           user = User.objects.get(username=username)
+           return Profile.objects.get(user_id=user.id)
         except Profile.DoesNotExist:
             raise Http404
 
