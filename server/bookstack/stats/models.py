@@ -13,5 +13,5 @@ class UserStats(models.Model):
     fav_era = models.IntegerField()
 
     def __str__(self):
-        # user = User.objects.get(id=self.user_id)
-        return f"{self.user_id} stats"
+        user = User.objects.get(id=self.user_id)
+        return f"{user.username} stats"
