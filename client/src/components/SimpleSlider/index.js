@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import Slider from "react-slick";
-// import "./styles.css";
+import "./styles.css";
 
 export default class SimpleSlider extends Component {
   render() {
@@ -14,8 +14,7 @@ export default class SimpleSlider extends Component {
       arrows: false,
     };
     return (
-      <div>
-        <h2> </h2>
+      <div className="slider">
         <Slider {...settings}>
           <div>
             <h3>stats </h3>
