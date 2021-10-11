@@ -19,7 +19,7 @@ const Nav = () => {
           </svg>
         </NavLink>
 
-        <NavLink to="/search" activeClassName="current">
+        <NavLink to="/search" activeClassName="current" className="text-decoration-none">
           <svg
             xmlns="http://www.w3.org/2000/svg"
             width="35"
@@ -32,7 +32,7 @@ const Nav = () => {
           </svg>
         </NavLink>
 
-        <NavLink to="/library" activeClassName="current">
+        <NavLink to="/library" activeClassName="current" className="text-decoration-none">
           <svg
             xmlns="http://www.w3.org/2000/svg"
             width="35"
