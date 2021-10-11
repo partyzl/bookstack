@@ -10,7 +10,7 @@ class Profiles(APIView):
     
     def get_object(self, username):
         try:
-           return Profile.objects.get(user_id=username)
+           return Profile.objects.get(username=username)
         except Profile.DoesNotExist:
             raise Http404
 

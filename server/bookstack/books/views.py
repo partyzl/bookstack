@@ -4,7 +4,7 @@ from django.http import Http404
 from rest_framework import status
 from .models import Book, BookStats
 from .serializers import BookSerializer, BookStatsSerializer
-from django.db.models import Count
+from statistics import mean
 
 
 # Create your views here.
@@ -45,9 +45,15 @@ class UserBooksDetail(APIView):
 
     def put(self, request, username, book_id, format=None):
         book = Book.objects.get(user_id=username, id=book_id)
+        title = book.title
         serializer = BookSerializer(book, data=request.data)
         if serializer.is_valid():
             serializer.save()
+            book_stats = BookStats.objects.get(title=title)
+            self.update_count(book_stats)
+            self.update_avg_rating(book_stats)
+            book_stats.save()
+            
             return Response(serializer.data, status=status.HTTP_202_ACCEPTED)
         return Response(serializer.data, status=status.HTTP_400_BAD_REQUEST)
 
@@ -58,12 +64,19 @@ class UserBooksDetail(APIView):
 
     # helper funcs
 
-    # def calc_rating(books, new_rating):
-    #     #query for average from books table after posting.
+    
+    
 
-    # def update_book_count(self, request, title):
-    #     book_stats = BookStats.objects.get(title=title)
-    #     self.calc_rating(book_stats, rating)
-    #     serializer = BookStatsSerializer(book_stats, )
-    #     if serializer.is_valid():
-    #         serializer.save()
+    def update_count(self, book_stats):
+        book_stats.count += 1
+        
+
+    def update_avg_rating(book_stats):
+        book_stats.avg_rating = Books.objects.raw(
+            'SELECT AVG(ALL rating) FROM book'
+        )
+        return book_stats
+        
+
+        
+        

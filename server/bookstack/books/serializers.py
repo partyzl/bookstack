@@ -14,7 +14,8 @@ class BookSerializer(serializers.ModelSerializer):
             "publish_year",
             "date_started",
             "date_finished",
-            "private"
+            "private",
+            "user_notes",
         )
 
 

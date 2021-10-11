@@ -1,6 +1,6 @@
 from django.contrib.auth.models import User
 from django.db import models
-from django.db.models.deletion import SET_NULL
+# from django.db.models.deletion import SET_NULL
 
 
 # Create your models here.
@@ -14,15 +14,15 @@ class Book(models.Model):
     rating = models.IntegerField()
     date_started = models.IntegerField()
     date_finished = models.IntegerField()
-    private = models.BooleanField(default=False)
-    notes = models.CharField(default=None, max_length=5000)
+    private = models.BooleanField(default=True)
+    user_notes = models.CharField(max_length=5000, null=True, blank=True)
 
     def __str__(self):
         return f"{self.title} by {self.author}"
 
 
 class BookStats(models.Model):
-    title = models.ForeignKey(Book, on_delete=SET_NULL, null=True)
+    title = models.ForeignKey(Book, on_delete=models.SET_NULL, null=True)
     avg_rating = models.IntegerField()
     book_count = models.IntegerField()
 
