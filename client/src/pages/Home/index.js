@@ -16,6 +16,7 @@ const Home = () => {
     <div className="body">
         <h1>hello world</h1>
         <SimpleSlider />
+        <br/>
         <Search />
         <div className="buttonContainer">
           <Button
