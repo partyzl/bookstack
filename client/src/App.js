@@ -1,6 +1,6 @@
 import "./App.css";
 import { Switch, Route } from "react-router-dom";
-import { Home } from "./pages";
+import { Home, Search } from "./pages";
 import { BookContextProvider } from "./context/bookContext";
 
 function App() {
@@ -8,9 +8,14 @@ function App() {
     <BookContextProvider>
       <div className="App">
         <Switch>
+          {/* NAVBAR ROUTES */}
           <Route exact path="/">
             <Home />
           </Route>
+          <Route path="/search">
+            <Search />
+          </Route>
+
           {/* Library Routes*/}
           {/* <Route path="/library">
             <Library />
@@ -22,23 +27,17 @@ function App() {
             <ToBeRead />
           </Route> */}
 
-          {/* <Route path="/search">
-            <Search />
-          </Route>
-
-          
-
-          <Route path="/profile">
-            <Profile />
+          {/* <Route path="/profile">
+           <Profile />
           </Route>
 
           <Route path="/">
-            < />
+           < />
           </Route>
 
           <Route>
-            <NotFound404 />
-          </Route> */}
+          <NotFound404 />
+          </Route>  */}
         </Switch>
       </div>
     </BookContextProvider>

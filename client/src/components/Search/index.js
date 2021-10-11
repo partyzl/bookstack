@@ -35,7 +35,7 @@ const Search = () => {
         let title = book.volumeInfo.title;
         let image = book.volumeInfo.imageLinks.thumbnail;
         let genre = book.volumeInfo.categories;
-        let author = book.volumeInfo.authors;
+        let author = book.volumeInfo.authors[0];
         let publish = book.volumeInfo.publishedDate;
         return {
           key,
