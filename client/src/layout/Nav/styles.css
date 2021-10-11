@@ -1,5 +1,72 @@
 .navbar {
-    background-color: rgb(192, 201, 255);
     padding: 30px;
     justify-content: space-evenly;
+    transition: .5s ease; 
 }
+
+.nav-text {
+    display: none;
+}
+
+/* .hamburger-button {
+    display: none;
+} */
+
+@media (min-width: 600px) {
+    /* .navbar { 
+        height: 100%;
+        width: 150px;
+        position: fixed;
+        transition: .5s ease; 
+        left: 0;
+        top: 0;
+        padding-top: 20px;
+        background-color: lightblue;
+        overflow-x: hidden; 
+        display: flex; 
+        flex-direction: column; 
+        align-items: center;
+    } */
+
+    .navBar {
+        position: relative;
+      }
+      
+    .hamburger-button {
+        position: static;
+        top: 0px;
+        left: 0px;
+        z-index: 10;
+        background: transparent;
+        border: none;
+        cursor: pointer;
+        color: black;
+    }
+      
+    .menuNav {
+        overflow-y: scroll;
+        list-style: none;
+        position: fixed;
+        top: 0;
+        left: 0;
+        bottom: 0;
+        height: 100vh;
+        width: 0;
+        overflow: hidden;
+        max-width: 290px;
+        z-index: 9;
+    }
+      
+    .menuNav.showMenu {
+        width: 100%;
+    }
+      
+    .menuNav li:first-child {
+        margin-top: 7rem;
+    }
+
+    h4.nav-text {
+        display: contents;
+    }
+
+  }
