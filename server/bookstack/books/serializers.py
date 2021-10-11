@@ -2,7 +2,7 @@ from rest_framework import serializers
 from .models import Book, BookStats
 
 
-class BookSerializer(serializers.ModelSerializers):
+class BookSerializer(serializers.ModelSerializer):
     class Meta:
         model = Book
         fields = (
@@ -14,10 +14,12 @@ class BookSerializer(serializers.ModelSerializers):
             "publish_year",
             "date_started",
             "date_finished",
+            "private",
+            "user_notes",
         )
 
 
-class BookStatsSerializer(serializers.ModelSerializers):
+class BookStatsSerializer(serializers.ModelSerializer):
     class Meta:
         model = BookStats
         fields = ("avg_rating", "book_count")
