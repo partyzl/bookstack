@@ -2,6 +2,7 @@ import React, { useState, useContext } from "react";
 // import "./styles.css";
 import axios from "axios";
 import { BookContext } from "../../context/bookContext";
+import { Books } from "../index";
 
 const Search = () => {
   const [title, setTitle] = useState("");
@@ -65,7 +66,7 @@ const Search = () => {
         />
         <input className="search-btn" type="submit" value="Search" />
       </form>
-      {books && books[0] && <img src={books[0].image} />}
+      {books && books[0] && <Books />}
       <p>{error}</p>
     </div>
   );
