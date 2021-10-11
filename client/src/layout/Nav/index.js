@@ -1,33 +1,13 @@
-import React, { useState } from "react";
+import React from "react";
 import { NavLink } from "react-router-dom";
-import { MdClose } from "react-icons/md"
-import { FiMenu } from "react-icons/fi"
 import "./styles.css";
 
 const Nav = () => {
-  const [navbarOpen, setNavbarOpen] = useState(false)
-
-  const handleToggle = () => {
-    setNavbarOpen(!navbarOpen)
-  }
-
-  const closeMenu = () => {
-    setNavbarOpen(false)
-  }
-
   return (
     <div>
       <nav className="navbar fixed-bottom navbar-light">
 
-      <button onClick={handleToggle} className="hamburger-button">
-        {navbarOpen ? (
-          <MdClose style={{ color: "black", width: "40px", height: "40px" }} />
-        ) : (
-          <FiMenu style={{ color: "black", width: "40px", height: "40px" }} />
-        )}
-      </button>
-
-        <NavLink to="/home" activeClassName="current" className={`menuNav ${navbarOpen ? " showMenu" : ""}`} onClick={() => closeMenu()} exact>
+        <NavLink to="/home" activeClassName="current">
           <svg
             xmlns="http://www.w3.org/2000/svg"
             width="16"
@@ -41,7 +21,7 @@ const Nav = () => {
           <h4 className="nav-text">Home</h4>
         </NavLink>
 
-        <NavLink to="/search" activeClassName="current" className={`menuNav ${navbarOpen ? " showMenu" : ""}`} onClick={() => closeMenu()} exact>
+        <NavLink to="/search" activeClassName="current">
           <svg
             xmlns="http://www.w3.org/2000/svg"
             width="16"
@@ -55,7 +35,7 @@ const Nav = () => {
           <h4 className="nav-text">Search</h4>
         </NavLink>
 
-        <NavLink to="/library" activeClassName="current" className={`menuNav ${navbarOpen ? " showMenu" : ""}`} onClick={() => closeMenu()} exact>
+        <NavLink to="/library" activeClassName="current">
           <svg
             xmlns="http://www.w3.org/2000/svg"
             width="16"
