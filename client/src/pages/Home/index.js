@@ -37,17 +37,7 @@ const Home = () => {
             onClick={toBeRead}
           />
         </div>
-
         <Nav />
-        <p>efrne</p>      
-        <p>efrne</p>
-        <p>efrne</p>
-        <p>efrne</p>
-        <p>efrne</p>
-        <p>efrne</p>
-        <p>efrne</p>
-        <p>efrne</p>
-        <p>efrne</p>
     </div>
   );
 };
