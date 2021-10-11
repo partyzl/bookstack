@@ -3,7 +3,7 @@ from rest_framework.views import APIView, Response
 from django.http import Http404
 from rest_framework import status
 from .models import Book, BookStats
-from .serializers import BookSerializer
+from .serializers import BookSerializer, BookStatsSerializer
 from django.db.models import Count
 
 
@@ -55,3 +55,14 @@ class UserBooksDetail(APIView):
         book = Book.objects.get(user_id=username, id=book_id)
         book.delete()
         return Response(status=status.HTTP_204_NO_CONTENT)
+
+    # helper funcs
+
+    def calc_rating(books, new_rating):
+
+    def update_book_count(self, request, title):
+        book_stats = BookStats.objects.get(title=title)
+        self.calc_rating(book_stats, rating)
+        serializer = BookStatsSerializer(book_stats, )
+        if serializer.is_valid():
+            serializer.save()
