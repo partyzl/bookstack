@@ -10,8 +10,8 @@ class Statistic(models.Model):
     avg_book_length = models.IntegerField(default=None)
     total_books_read = models.IntegerField(default=None)
     genres = models.JSONField(default=None)
-    fav_era = models.IntegerField(max_length=4)
+    fav_era = models.IntegerField()
 
     def __str__(self):
-        user = User.objects.get(id=self.user_id)
-        return f'{user.username} stats'
+        # user = User.objects.get(id=self.user_id)
+        return f'{self.user_id} stats'

@@ -10,7 +10,7 @@ class Profile(models.Model):
     book_target = models.IntegerField(default=None)
 
     def __str__(self):
-        user = User.objects.get(id = self.user_id)
-        return user.username
+        # user = User.objects.get(id = self.user_id)
+        return str(self.user_id)
 
     

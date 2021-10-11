@@ -42,7 +42,8 @@ INSTALLED_APPS = [
     "rest_framework",
     "users.apps.UsersConfig",
     "profiles.apps.ProfilesConfig",
-    "stats.apps.StatsConfig"
+    "stats.apps.StatsConfig",
+    "books.apps.BooksConfig"
 ]
 
 MIDDLEWARE = [
