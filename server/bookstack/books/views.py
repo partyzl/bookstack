@@ -58,11 +58,12 @@ class UserBooksDetail(APIView):
 
     # helper funcs
 
-    def calc_rating(books, new_rating):
+    # def calc_rating(books, new_rating):
+    #     #query for average from books table after posting.
 
-    def update_book_count(self, request, title):
-        book_stats = BookStats.objects.get(title=title)
-        self.calc_rating(book_stats, rating)
-        serializer = BookStatsSerializer(book_stats, )
-        if serializer.is_valid():
-            serializer.save()
+    # def update_book_count(self, request, title):
+    #     book_stats = BookStats.objects.get(title=title)
+    #     self.calc_rating(book_stats, rating)
+    #     serializer = BookStatsSerializer(book_stats, )
+    #     if serializer.is_valid():
+    #         serializer.save()
