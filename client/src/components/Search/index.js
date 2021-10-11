@@ -65,6 +65,7 @@ const Search = () => {
         />
         <input className="search-btn" type="submit" value="Search" />
       </form>
+        <br/>
       {books && books[0] && <img src={books[0].image} />}
       <p>{error}</p>
     </div>
