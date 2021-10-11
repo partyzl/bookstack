@@ -14,7 +14,7 @@ class Book(models.Model):
     rating = models.IntegerField()
     date_started = models.IntegerField()
     date_finished = models.IntegerField()
-    private = models.BooleanField(default=True)
+    private = models.BooleanField(default=False)
     notes = models.CharField(default=None, max_length=5000)
 
     def __str__(self):
