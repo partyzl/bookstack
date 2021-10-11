@@ -1,19 +1,21 @@
 import "./App.css";
 import { Switch, Route } from "react-router-dom";
 import { Home, ToBeRead } from "./pages";
+import { BookContextProvider } from "./context/bookContext";
 
 function App() {
   return (
-    <div className="App">
-      <Switch>
-        <Route exact path="/">
-          <Home />
-        </Route>
-        <Route exact path="/toberead">
-          <ToBeRead />
-        </Route>
+    <BookContextProvider>
+      <div className="App">
+        <Switch>
+          <Route exact path="/">
+            <Home />
+          </Route>
+          <Route exact path="/toberead">
+            <ToBeRead />
+          </Route>
 
-        {/* <Route path="/search">
+          {/* <Route path="/search">
             <Search />
           </Route>
 
@@ -32,8 +34,9 @@ function App() {
           <Route>
             <NotFound404 />
           </Route> */}
-      </Switch>
-    </div>
+        </Switch>
+      </div>
+    </BookContextProvider>
   );
 }
 

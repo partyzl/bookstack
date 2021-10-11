@@ -1,9 +1,7 @@
 import React from "react";
 import { useHistory } from "react-router";
-import { Button } from "../../components";
-
 import { Nav } from "../../layout";
-import SimpleSlider from "../../components/SimpleSlider";
+import { Search, SimpleSlider, BookCard, Button } from "../../components";
 
 const Home = () => {
   let history = useHistory();
@@ -16,6 +14,7 @@ const Home = () => {
     <div>
       <h1>hello world</h1>
       <SimpleSlider />
+      <Search />
       <div className="buttonContainer">
         <Button
           type="button"
