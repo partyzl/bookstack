@@ -2,7 +2,7 @@ from django.shortcuts import render
 from rest_framework.views import APIView, Response
 from django.http import Http404
 from rest_framework import status
-from .models import Book
+from .models import Book, BookStats
 from .serializers import BookSerializer
 from django.db.models import Count
 
