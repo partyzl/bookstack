@@ -16,9 +16,11 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path, include
 from users.views import UserRegistration
+from books.views import Books
 
 urlpatterns = [
     path("admin/", admin.site.urls),
     path("register/", UserRegistration),
-    path("profiles/", include("profiles.urls"))
+    path("profiles/", include("profiles.urls")),
+    path("books/", Books.as_view())
 ]
