@@ -1,6 +1,6 @@
 import "./App.css";
 import { Switch, Route } from "react-router-dom";
-import { Login, Registration, ProfileSetup, Home, Search } from "./pages";
+import { Login, Registration, ProfileSetup, Profile, Home, Search } from "./pages";
 import { Landing, ToBeRead } from "./pages/Library";
 import { BookContextProvider } from "./context/bookContext";
 
@@ -28,6 +28,9 @@ function App() {
           </Route>
           <Route path="/search">
             <Search />
+          </Route>
+          <Route path="/profile">
+           <Profile />
           </Route>
 
           {/* Library Routes*/}

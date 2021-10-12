@@ -8,3 +8,4 @@ export { default as Search } from "./Search";
 export { default as Login } from "./AccountSetup/Login";
 export { default as Registration } from "./AccountSetup/Registration";
 export { default as ProfileSetup } from "./AccountSetup/ProfileSetup";
+export { default as Profile } from "./Profile";
