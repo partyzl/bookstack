@@ -27,13 +27,14 @@ SECRET_KEY = (
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['*']
+ALLOWED_HOSTS = ["*"]
 
 
 # Application definition
 
 INSTALLED_APPS = [
     "django.contrib.admin",
+    "whitenoise.middleware.WhiteNoiseMiddleware",
     "django.contrib.auth",
     "django.contrib.contenttypes",
     "django.contrib.sessions",
@@ -43,7 +44,7 @@ INSTALLED_APPS = [
     "users.apps.UsersConfig",
     "profiles.apps.ProfilesConfig",
     "stats.apps.StatsConfig",
-    "books.apps.BooksConfig"
+    "books.apps.BooksConfig",
 ]
 
 MIDDLEWARE = [
