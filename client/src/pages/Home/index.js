@@ -13,9 +13,8 @@ const Home = () => {
 
   return (
     <div className="body">
-      <SimpleSlider />
-      <br />
-      
+      <Nav />
+
       <div className="buttonContainer">
         <Button
           type="button"
