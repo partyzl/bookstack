@@ -9,6 +9,7 @@ djangorestframework = "*"
 "django.utils" = "*"
 pillow = "*"
 whitenoise = "*"
+gunicorn = "*"
 
 [dev-packages]
 
