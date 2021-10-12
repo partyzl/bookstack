@@ -1,12 +1,12 @@
 import React from "react";
 import { SimpleSlider } from "../../components";
-import { Nav } from "../../layout";
+import { Header, Nav } from "../../layout";
 
 const Profile = () => {
 
     return (
         <div className="body">
-
+            
             {/* profile picture */}
             <img alt="profile picture"/>
 
@@ -23,7 +23,7 @@ const Profile = () => {
 
             <h4>Books currently being read: </h4>
             <SimpleSlider />
-            
+
             <Nav />
         </div>
     )
