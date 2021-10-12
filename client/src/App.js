@@ -1,6 +1,7 @@
 import "./App.css";
 import { Switch, Route } from "react-router-dom";
 import { Home, Search } from "./pages";
+import { Landing } from "./pages/Library";
 import { BookContextProvider } from "./context/bookContext";
 
 function App() {
@@ -17,15 +18,15 @@ function App() {
           </Route>
 
           {/* Library Routes*/}
-          {/* <Route path="/library">
-            <Library />
+          <Route path="/library">
+            <Landing />
           </Route>
-          <Route path="/completedreads">
+          {/* <Route path="/completedreads">
             <CompletedReads />
           </Route>
           <Route exact path="/toberead">
             <ToBeRead />
-          </Route> */}
+          </Route>  */}
 
           {/* <Route path="/profile">
            <Profile />
