@@ -1,6 +1,6 @@
 import "./App.css";
 import { Switch, Route } from "react-router-dom";
-import { Login, Registration, Home, Search } from "./pages";
+import { Login, Registration, ProfileSetup, Home, Search } from "./pages";
 import { Landing, ToBeRead } from "./pages/Library";
 import { BookContextProvider } from "./context/bookContext";
 
@@ -16,6 +16,10 @@ function App() {
 
           <Route path="/registration">
            <Registration />
+          </Route>
+
+          <Route path="/profile-setup">
+           <ProfileSetup />
           </Route>
 
           {/* NAVBAR ROUTES */}
