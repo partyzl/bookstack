@@ -1,26 +1,27 @@
 from django.core.checks.messages import Error
 from rest_framework.views import APIView, Response
 from .models import Profile
-from .serializers import ProfileSerializer
+from .serializers import ProfileSerializer, ProfileAvatarSerializer
 from stats.serializers import UserStatsSerializer
 from rest_framework import status
 from django.http import Http404
 from django.contrib.auth.models import User
-from rest_framework.parsers import FormParser, MultiPartParser
+from rest_framework import parsers
 
 # Create your views here.
 
 
 class CreateProfile(APIView):
-
-    parser_classes = (FormParser, MultiPartParser)
-
     def post(self, request, format=None):
-        prof_serializer = ProfileSerializer(data=request.data["profile"])
-        stats_serializer = UserStatsSerializer(data=request.data["stats"])
+        prof_serializer = ProfileSerializer(
+            data=request.data["profile"], partial=True
+        )
+        stats_serializer = UserStatsSerializer(
+            data=request.data["stats"], partial=True
+        )
         if prof_serializer.is_valid():
             prof_serializer.save()
-            stats_serializer.save(avatar=request.data["profile"]["avatar"])
+            stats_serializer.save()
             return Response(
                 prof_serializer.data, status=status.HTTP_201_CREATED
             )
@@ -30,6 +31,8 @@ class CreateProfile(APIView):
 
 
 class Profiles(APIView):
+    parser_classes = (parsers.FormParser, parsers.MultiPartParser)
+
     def get_object(self, username):
         try:
             user = User.objects.get(username=username)
@@ -44,7 +47,12 @@ class Profiles(APIView):
 
     def put(self, request, username, format=None):
         profile = self.get_object(username)
-        serializer = ProfileSerializer(profile, data=request.data)
+        if request.FILES["file"]:
+            serializer = ProfileAvatarSerializer(profile, partial=True)
+        else:
+            serializer = ProfileSerializer(
+                profile, data=request.data, partial=True
+            )
         if serializer.is_valid():
             serializer.save()
             return Response(serializer.data, status=status.HTTP_202_ACCEPTED)
