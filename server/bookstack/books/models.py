@@ -1,5 +1,6 @@
 from django.contrib.auth.models import User
 from django.db import models
+from datetime import date
 # from django.db.models.deletion import SET_NULL
 
 
@@ -10,10 +11,11 @@ class Book(models.Model):
     author = models.CharField(max_length=50)
     cover = models.ImageField()
     page_num = models.IntegerField()
+    genre = models.CharField(max_length=100)
     publish_year = models.IntegerField()
     rating = models.IntegerField()
-    date_started = models.IntegerField()
-    date_finished = models.IntegerField()
+    date_started = models.DateField(default=date.time())
+    date_finished = models.DateField()
     private = models.BooleanField(default=True)
     user_notes = models.CharField(max_length=5000, null=True, blank=True)
 
