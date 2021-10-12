@@ -8,6 +8,17 @@ from django.http import Http404
 from django.contrib.auth.models import User
 
 # Create your views here.
+
+class CreateProfile(APIView):
+     def post(self, request, format=None):
+        prof_serializer = ProfileSerializer(data=request.data["profile"])
+        stats_serializer = UserStatsSerializer(data=request.data["stats"])
+        if prof_serializer.is_valid():
+            prof_serializer.save()
+            stats_serializer.save()
+            return Response(prof_serializer.data, status=status.HTTP_201_CREATED)
+        return Response(prof_serializer.errors, status=status.HTTP_400_BAD_REQUEST)
+
 class Profiles(APIView):
     
     def get_object(self, username):
@@ -21,15 +32,6 @@ class Profiles(APIView):
         profile = self.get_object(username)
         serializer = ProfileSerializer(profile)
         return Response(serializer.data, status=status.HTTP_200_OK)        
-
-    def post(self, request, username, format=None):
-        prof_serializer = ProfileSerializer(data=request.data.profile)
-        stats_serializer = UserStatsSerializer(data=request.data.stats)
-        if prof_serializer.is_valid():
-            prof_serializer.save()
-            stats_serializer.save()
-            return Response(prof_serializer.data, status=status.HTTP_201_CREATED)
-        return Response(prof_serializer.errors, status=status.HTTP_400_BAD_REQUEST)
 
     def put(self, request, username, format=None):
         profile = self.get_object(username)
