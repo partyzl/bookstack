@@ -6,6 +6,7 @@ from books.models import Book
 from .models import UserStats
 from .serializers import UserStatsSerializer
 
+import math
 
 # Create your views here.
 class Stats(APIView):
@@ -23,7 +24,7 @@ class Stats(APIView):
         stats = self.get_objects(username)
 
         #call user stats generation.
-        self.generate_user_stats(username)
+        self.update_user_stats(username)
 
         serializer = UserStatsSerializer(stats, data=request.data)
         if serializer.is_valid():
@@ -31,33 +32,46 @@ class Stats(APIView):
             return Response(serializer.data, status=status.HTTP_202_ACCEPTED)
         return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
 
-    def generate_user_stats(self, username):
+    def update_user_stats(self, username):
         #get the total reading time of books
-        finished_books = list(Book.objects.filter())#insert query for books that have a not null finished date.
+        finished_books = list(Book.objects.raw('SELECT * FROM Book WHERE date_finished IS NOT NULL'))#insert query for books that have a not null finished date.
         finished_total = len(finished_books)
         [reading_time, pages_read] = self.get_reading_data(finished_books)
 
-        #get total pages read and divide by total reading time in days
         pages_per_day = pages_read / reading_time 
-        
-        #get total reading time and divide by books read
         avg_book_time = reading_time / finished_total
 
-        #get total number of books with finished date
+        genre_list = list(Book.objects.raw('SELECT genre, count(genre) FROM Book GROUP by genre'))
 
-        #count the books of each genre and divide each number by the total number of books.
+        #get favourite era
+        publish_years = list(Book.objects.raw('SELECT publish_year FROM Book'))
+        decades_list = map(self.rounding, publish_years)
+        fav_era = self.most_common_decade(decades_list)
 
-        #get each publish date and round down to decade. count frequency of decades and select largest.
-        return
+
+
+#------------------------------HELPER FUNCTIONS-----------------------------#
+
+
+
+    def rounding(year_object):
+        return math.floor(year_object / 10) * 10
+
+    def most_common_decade(decades):
+        counter = 0 
+        decade = decades[0]
+        for i in decades:
+            current_decade = decades.count(i)
+            if current_decade > counter:
+                counter = current_decade
+                decade = i
+        return decade                
 
     def get_reading_data(self, book_list):
-        # get all books where there is a finished date
-        # for each get number of days between dates
-        # add days to daycount
         total_days = 0
         total_pages = 0
         for book in book_list:
-            #days = #get days
+            difference = book.date_finished - book.date_started
             total_pages += book.page_num
-            total_days += days
+            total_days += difference.days
         return total_days, total_pages
