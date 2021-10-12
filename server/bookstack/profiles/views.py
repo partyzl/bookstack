@@ -2,6 +2,7 @@ from django.core.checks.messages import Error
 from rest_framework.views import APIView, Response
 from .models import Profile
 from .serializers import ProfileSerializer
+from stats.serializers import UserStatsSerializer
 from rest_framework import status
 from django.http import Http404
 from django.contrib.auth.models import User
@@ -22,11 +23,13 @@ class Profiles(APIView):
         return Response(serializer.data, status=status.HTTP_200_OK)        
 
     def post(self, request, username, format=None):
-        serializer = ProfileSerializer(data=request.data)
-        if serializer.is_valid():
-            serializer.save()
-            return Response(serializer.data, status=status.HTTP_201_CREATED)
-        return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
+        prof_serializer = ProfileSerializer(data=request.data.profile)
+        stats_serializer = UserStatsSerializer(data=request.data.stats)
+        if prof_serializer.is_valid():
+            prof_serializer.save()
+            stats_serializer.save()
+            return Response(prof_serializer.data, status=status.HTTP_201_CREATED)
+        return Response(prof_serializer.errors, status=status.HTTP_400_BAD_REQUEST)
 
     def put(self, request, username, format=None):
         profile = self.get_object(username)

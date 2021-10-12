@@ -33,7 +33,6 @@ class Stats(APIView):
         return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
 
     def update_user_stats(self, username):
-        #get the total reading time of books
         finished_books = list(Book.objects.raw('SELECT * FROM Book WHERE date_finished IS NOT NULL'))#insert query for books that have a not null finished date.
         finished_total = len(finished_books)
         [reading_time, pages_read] = self.get_reading_data(finished_books)
