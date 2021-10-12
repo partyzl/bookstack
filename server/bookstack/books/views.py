@@ -29,27 +29,31 @@ class UserBooks(APIView):
         return Response(serializer.data, status=status.HTTP_200_OK)
 
     def post(self, request, username, format=None):
-        serializer = BookSerializer(data=request.data)
-        if serializer.is_valid():
-            serializer.save()
-            return Response(serializer.data, status=status.HTTP_201_CREATED)
-        return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
+        book_serializer = BookSerializer(data=request.data.book)
+        stats_serializer = BookStatsSerializer(data=request.data.stats)
+        if book_serializer.is_valid():
+            book_serializer.save()
+            stats_serializer.save()
+            return Response(
+                book_serializer.data, status=status.HTTP_201_CREATED
+            )
+        return Response(
+            book_serializer.errors, status=status.HTTP_400_BAD_REQUEST
+        )
 
 
 class UserBooksDetail(APIView):
-
     def get_object(self, username, book_id):
         try:
             user = User.objects.get(username=username)
             return Book.objects.get(user_id=user.id, id=book_id)
         except Book.DoesNotExist:
             raise Http404
-    
+
     def get(self, request, username, book_id, format=None):
         book = self.get_object(username, book_id)
         serializer = BookSerializer(book)
         return Response(serializer.data, status=status.HTTP_200_OK)
-    
 
     def put(self, request, username, book_id, format=None):
         book = self.get_object(username, book_id)
@@ -61,7 +65,7 @@ class UserBooksDetail(APIView):
             self.update_count(book_stats)
             self.update_avg_rating(book_stats)
             book_stats.save()
-            
+
             return Response(serializer.data, status=status.HTTP_202_ACCEPTED)
         return Response(serializer.data, status=status.HTTP_400_BAD_REQUEST)
 
@@ -72,19 +76,11 @@ class UserBooksDetail(APIView):
 
     # helper funcs
 
-    
-    
-
     def update_count(self, book_stats):
         book_stats.count += 1
-        
 
     def update_avg_rating(book_stats):
         book_stats.avg_rating = Books.objects.raw(
-            'SELECT AVG(ALL rating) FROM book'
+            "SELECT AVG(ALL rating) FROM book"
         )
         return book_stats
-        
-
-        
-        
