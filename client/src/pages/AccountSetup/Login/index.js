@@ -12,7 +12,13 @@ const Login = () => {
       history.push("/");
     };
 
+    const register = () => {
+        history.push("/registration");
+      };
+
     // will make this consider auth when we link to backend
+    // something along the lines of
+    // let element= state? <a href={url}>LinkedIn handle</a> : <p>No handle exists for this user!</p>;
 
     return (
         <div className="body">
@@ -42,6 +48,13 @@ const Login = () => {
                     onClick={home}
                 />
             </form>
+            <Button
+                type="button"
+                className={"btn btn-primary col-sm-2 mb-3"}
+                value="Register"                    
+                onClick={register}
+                />
+            <p>Don't have an account? Why not register here!</p>  
         </div>
     );
 };
