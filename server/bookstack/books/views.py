@@ -29,8 +29,8 @@ class UserBooks(APIView):
         return Response(serializer.data, status=status.HTTP_200_OK)
 
     def post(self, request, username, format=None):
-        book_serializer = BookSerializer(data=request.data.book)
-        stats_serializer = BookStatsSerializer(data=request.data.stats)
+        book_serializer = BookSerializer(data=request.data["book"])
+        stats_serializer = BookStatsSerializer(data=request.data["stats"])
         if book_serializer.is_valid():
             book_serializer.save()
             stats_serializer.save()
