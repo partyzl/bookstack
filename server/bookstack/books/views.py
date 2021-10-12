@@ -19,28 +19,34 @@ class UserBooks(APIView):
     def get_object(self, username):
         try:
             user = User.objects.get(username=username)
-            return Book.objects.get(user_id=user.id)
+            return Book.objects.filter(user_id=user.id)
         except Book.DoesNotExist:
             raise Http404
 
     def get(self, request, username, format=None):
         books = self.get_object(username)
-        serializer = BookSerializer(books)
+        serializer = BookSerializer(books, many=True)
         return Response(serializer.data, status=status.HTTP_200_OK)
 
     def post(self, request, username, format=None):
+        user = User.objects.get(username=username)
         book_serializer = BookSerializer(data=request.data)
-        # stats_serializer = BookStatsSerializer(data=request.data)
+        if list(Book.objects.filter(user_id=user.id, title=request.data["title"])):
+            print(list(Book.objects.filter(user_id=user.id, title=request.data["title"])))
+            return Response('you already have this book', status=status.HTTP_400_BAD_REQUEST)
         if book_serializer.is_valid():
             book_serializer.save()
-        # if stats_serializer.is_valid():
-        #     stats_serializer.save()
+            if list(BookStats.objects.filter(title=book_serializer.data["title"])):
+                return Response(book_serializer.data, status=status.HTTP_201_CREATED)
+            stats_serializer = BookStatsSerializer(data=request.data)
+            if stats_serializer.is_valid():
+                stats_serializer.save()
             return Response(
-                book_serializer.data, status=status.HTTP_201_CREATED
+                {"book": book_serializer.data, "book_stats": stats_serializer.data}, status=status.HTTP_201_CREATED
             )
-        return Response(
-            book_serializer.errors, status=status.HTTP_400_BAD_REQUEST
-        )
+        return Response(book_serializer.errors, status=status.HTTP_400_BAD_REQUEST)
+        
+        
 
 
 class UserBooksDetail(APIView):

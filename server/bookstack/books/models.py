@@ -25,9 +25,9 @@ class Book(models.Model):
 
 
 class BookStats(models.Model):
-    title = models.ForeignKey(Book, on_delete=models.SET_NULL, null=True)
-    avg_rating = models.IntegerField()
-    book_count = models.IntegerField()
+    title = models.CharField(max_length=500, null=True)
+    avg_rating = models.IntegerField(null=True)
+    book_count = models.IntegerField(default=1)
 
     def __str__(self):
-        return f"{self.title} is rated at {self.rating}"
+        return f"{self.title} is rated at {self.avg_rating}"
