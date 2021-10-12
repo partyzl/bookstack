@@ -9,8 +9,8 @@ const Register = () => {
     let history = useHistory();
 
     // will send user to account setup 
-    const home = () => {
-      history.push("/");
+    const setup = () => {
+      history.push("/profile-setup");
     };
 
     // will make this consider auth when we link to backend
@@ -46,7 +46,7 @@ const Register = () => {
                     type="submit"
                     className={"btn btn-primary col-sm-2 mb-3"}
                     value="Register"
-                    onClick={home}
+                    onClick={setup}
                 />
             </form>
         </div>

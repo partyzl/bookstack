@@ -1,7 +1,7 @@
 import "./App.css";
 import { Switch, Route } from "react-router-dom";
-import { Login, Registration, Home, Search } from "./pages";
-import { Landing, ToBeRead, CurrentReads } from "./pages/Library";
+import { Login, Registration, ProfileSetup, Home, Search } from "./pages";
+import { Landing, ToBeRead } from "./pages/Library";
 import { BookContextProvider } from "./context/bookContext";
 
 function App() {
@@ -16,6 +16,10 @@ function App() {
 
           <Route path="/registration">
             <Registration />
+          </Route>
+
+          <Route path="/profile-setup">
+           <ProfileSetup />
           </Route>
 
           {/* NAVBAR ROUTES */}
@@ -38,7 +42,7 @@ function App() {
           </Route>
 
 
-          
+
           {/* <Route path="/completedreads">
             <CompletedReads />
 
