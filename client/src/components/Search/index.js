@@ -31,23 +31,22 @@ const Search = () => {
       }
       console.log(data.items);
       const array = data.items.map((book) => {
-        let key = book.id;
-        let title = book.volumeInfo.title;
-        let image = book.volumeInfo.imageLinks.thumbnail;
-        let genre = book.volumeInfo.categories;
-        let author = book.volumeInfo.authors[0];
-        let publish = book.volumeInfo.publishedDate;
         return {
-          key,
-          title,
-          image,
-          author,
-          genre,
-          publish,
+          key: book.id,
+          title: book.volumeInfo.title,
+          image: book.volumeInfo.imageLinks.thumbnail,
+          author: book.volumeInfo.authors[0],
+          genre: book?.volumeInfo?.categories
+            ? book.volumeInfo.categories[0]
+            : "",
+          publish: book.volumeInfo.publishedDate,
         };
       });
+      console.log(array);
+
       setBooks(array);
     } catch (err) {
+      console.log(err);
       setError("Sorry, this Book does not exist");
     }
   };
@@ -66,7 +65,7 @@ const Search = () => {
         />
         <input className="search-btn" type="submit" value="Search" />
       </form>
-        <br/>
+      <br />
       {books && books[0] && <Books />}
       <p>{error}</p>
     </div>
