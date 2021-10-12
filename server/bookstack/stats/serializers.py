@@ -6,8 +6,9 @@ class UserStatsSerializer(serializers.ModelSerializer):
     class Meta:
         model = UserStats
         fields = (
+            "user_id",
             "pages_per_day",
-            "av_book_time",
+            "avg_book_time",
             "avg_book_length",
             "total_books_read",
             "genres",
