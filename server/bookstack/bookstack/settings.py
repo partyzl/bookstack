@@ -9,7 +9,8 @@ https://docs.djangoproject.com/en/3.2/topics/settings/
 For the full list of settings and their values, see
 https://docs.djangoproject.com/en/3.2/ref/settings/
 """
-
+import os
+import django_heroku
 from pathlib import Path
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
@@ -20,20 +21,19 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # See https://docs.djangoproject.com/en/3.2/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = (
-    "django-insecure-3d=6m7v7h8fbfd8(xgao@s28j&mcz=m_t0$rft%gk2^+jpf*n+"
-)
+SECRET_KEY = os.environ.get("SECRET_KEY")
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['*']
+ALLOWED_HOSTS = ["*"]
 
 
 # Application definition
 
 INSTALLED_APPS = [
     "django.contrib.admin",
+    "whitenoise.middleware.WhiteNoiseMiddleware",
     "django.contrib.auth",
     "django.contrib.contenttypes",
     "django.contrib.sessions",
@@ -43,7 +43,7 @@ INSTALLED_APPS = [
     "users.apps.UsersConfig",
     "profiles.apps.ProfilesConfig",
     "stats.apps.StatsConfig",
-    "books.apps.BooksConfig"
+    "books.apps.BooksConfig",
 ]
 
 MIDDLEWARE = [
@@ -131,3 +131,5 @@ STATIC_URL = "/static/"
 # https://docs.djangoproject.com/en/3.2/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = "django.db.models.BigAutoField"
+
+django_heroku.settings(locals())
