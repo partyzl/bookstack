@@ -1,12 +1,12 @@
 import React from "react";
 import { SimpleSlider } from "../../components";
-import { Header, Nav } from "../../layout";
+import { Nav } from "../../layout";
 
 const Profile = () => {
 
     return (
         <div className="body">
-            
+
             {/* profile picture */}
             <img alt="profile picture"/>
 
