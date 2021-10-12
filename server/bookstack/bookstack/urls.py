@@ -17,10 +17,11 @@ from django.contrib import admin
 from django.urls import path, include
 from users.views import UserRegistration
 from books.views import Books
+from django.views.decorators.csrf import csrf_exempt
 
 urlpatterns = [
     path("admin/", admin.site.urls),
-    path("register/", UserRegistration),
+    path("register/", csrf_exempt(UserRegistration.as_view())),
     path("profiles/", include("profiles.urls")),
     path("books/", Books.as_view())
 ]
