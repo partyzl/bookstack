@@ -18,10 +18,12 @@ from django.urls import path, include
 from users.views import UserRegistration
 from books.views import Books
 from django.views.decorators.csrf import csrf_exempt
+from rest_framework.authtoken.views import obtain_auth_token
 
 urlpatterns = [
     path("admin/", admin.site.urls),
     path("register/", csrf_exempt(UserRegistration.as_view())),
+    path("login/", obtain_auth_token),
     path("profiles/", include("profiles.urls")),
     path("books/", Books.as_view())
 ]

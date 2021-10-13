@@ -1,3 +1,2 @@
-web: gunicorn bookstack/bookstack.wsgi
-release: python bookstack/bookstack/manage.py makemigrations -noinput
-release: python bookstack/bookstack/manage.py migrate -noinput
+web: cd bookstack && gunicorn bookstack.wsgi
+
