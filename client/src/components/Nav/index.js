@@ -4,7 +4,7 @@ import "./styles.css";
 
 const Nav = () => {
   return (
-    <div className="navContainer">
+    <div className="navContainer overlay">
       <nav className="navbar fixed-bottom navbar-light">
         <NavLink
           to="/search"

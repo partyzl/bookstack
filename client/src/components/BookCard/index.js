@@ -1,14 +1,41 @@
-import { React } from "react";
+import { React, useState } from "react";
 import { useHistory } from "react-router";
+import axios from "axios";
 import "./styles.css";
 import { Button } from "../index";
+
 // import { CurrentReads } from "../../pages";
 
 const BookCard = ({ key, title, cover, author, genre, published }) => {
+  const [error, setError] = useState("");
   let history = useHistory();
 
-  const addBook = () => {
-    history.push("/currentread");
+  // const addBook = () => {
+  //   history.push("/currentread");
+  // };
+
+  const addBook = async () => {
+    try {
+      const { data } = await axios.post(
+        `https://bookstack-heroku-app.herokuapp.com/books`,
+        {
+          key,
+          title,
+          cover,
+          author,
+          genre,
+          published,
+        }
+      );
+
+      if (data) {
+        return data;
+      } else {
+        setError("Sorry, book could not be added to your to be read stack");
+      }
+    } catch (err) {
+      setError("Sorry, book could not be added to your to be read stack");
+    }
   };
 
   return (
@@ -23,7 +50,7 @@ const BookCard = ({ key, title, cover, author, genre, published }) => {
         </div>
         <div>
           <Button type="button" className={"btn btn-primary"} onClick={addBook}>
-            <i class="bi bi-plus-circle"></i> Add to bookshelf
+            <i className="bi bi-plus-circle"></i> Add to bookshelf
           </Button>
         </div>
       </div>

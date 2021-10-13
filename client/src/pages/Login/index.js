@@ -12,7 +12,7 @@ const Login = () => {
   };
 
   const register = () => {
-    history.push("/registration");
+    history.push("/register");
   };
 
   // will make this consider auth when we link to backend

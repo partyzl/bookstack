@@ -3,6 +3,7 @@ import React, { useState, useContext } from "react";
 import axios from "axios";
 import { BookContext } from "../../context/bookContext";
 import { Books } from "../index";
+import "./styles.css";
 
 const Search = () => {
   const [title, setTitle] = useState("");
@@ -33,9 +34,9 @@ const Search = () => {
       const array = data.items.map((book) => {
         return {
           key: book.id,
-          title: book.volumeInfo.title,
-          image: book.volumeInfo.imageLinks.thumbnail,
-          author: book.volumeInfo.authors[0],
+          title: book?.volumeInfo?.title,
+          image: book?.volumeInfo?.imageLinks?.thumbnail,
+          author: book?.volumeInfo?.authors ? book.volumeInfo.authors[0] : "",
           genre: book?.volumeInfo?.categories
             ? book.volumeInfo.categories[0]
             : "",

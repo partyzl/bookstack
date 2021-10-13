@@ -1,5 +1,5 @@
 import React from "react";
-import { Books, Search } from "../../components";
+import { Search } from "../../components";
 
 const SearchResults = () => {
   return (
