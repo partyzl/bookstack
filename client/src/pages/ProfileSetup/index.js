@@ -9,6 +9,18 @@ const ProfileSetup = () => {
     history.push("/profilelanding");
   };
 
+const BASE_URL = "localhost:3000";
+const USER_URL = "localhost:3000/profile";
+
+const token = localStorage.getItem("token");
+
+function checkToken() {
+	if (!token) {
+		history.push("/loginlanding");
+		return;
+	}
+}
+
   return (
     <div className="body">
       <form>

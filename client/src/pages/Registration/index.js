@@ -31,7 +31,8 @@ const Registration = () => {
         <Button
           type="submit"
           className={"btn btn-light col-sm-2 mb-3"}
-          onClick={setup}
+          // onClick={setup}
+          onClick={requestRegistration}
         >
           Register
         </Button>

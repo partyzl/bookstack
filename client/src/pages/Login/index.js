@@ -31,7 +31,8 @@ const Login = () => {
         <Button
           type="submit"
           className={"btn btn-light col-sm-2 mb-3"}
-          onClick={profilelanding}
+          // onClick={profilelanding}
+          onClick={requestLogin()}
         >
           Login
         </Button>
