@@ -33,6 +33,8 @@ ALLOWED_HOSTS = ["*"]
 
 
 CORS_ALLOWED_ORIGINS = ["http://localhost:3000"]
+CORS_ALLOW_CREDENTIALS = True
+
 # CORS_ORIGIN_ALLOW_ALL = True
 # Application definition
 
@@ -61,7 +63,6 @@ REST_FRAMEWORK = {
 }
 
 MIDDLEWARE = [
-    "django.middleware.security.SecurityMiddleware",
     "corsheaders.middleware.CorsMiddleware",
     "whitenoise.middleware.WhiteNoiseMiddleware",
     "django.contrib.sessions.middleware.SessionMiddleware",
