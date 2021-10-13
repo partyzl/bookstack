@@ -30,8 +30,6 @@ DEBUG = True
 
 ALLOWED_HOSTS = ["*"]
 
-
-
 CORS_ALLOWED_ORIGINS = ["http://localhost:3000"]
 # CORS_ORIGIN_ALLOW_ALL = True
 # Application definition
@@ -50,15 +48,13 @@ INSTALLED_APPS = [
     "profiles.apps.ProfilesConfig",
     "stats.apps.StatsConfig",
     "books.apps.BooksConfig",
-    
-
 ]
 
-REST_FRAMEWORK = {
-    'DEFAULT_AUTHENTICATION_CLASSES': [
-        'rest_framework.authentication.TokenAuthentication',  # <-- And here
-    ],
-}
+# REST_FRAMEWORK = {
+#     'DEFAULT_AUTHENTICATION_CLASSES': [
+#         'rest_framework.authentication.TokenAuthentication',  # <-- And here
+#     ],
+# }
 
 MIDDLEWARE = [
     "django.middleware.security.SecurityMiddleware",
@@ -76,6 +72,7 @@ REST_FRAMEWORK = {
     'DEFAULT_AUTHENTICATION_CLASSES': [
         'rest_framework.authentication.BasicAuthentication',
         'rest_framework.authentication.SessionAuthentication',
+        'rest_framework.authentication.TokenAuthentication'
     ]
 }
 

@@ -33,7 +33,6 @@ class CreateProfile(APIView):
 
 class Profiles(APIView):
     Permission_classes = [IsAuthenticated]
-
     parser_classes = (parsers.FormParser, parsers.MultiPartParser)
 
     def get_object(self, username):
