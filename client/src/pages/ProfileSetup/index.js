@@ -1,6 +1,7 @@
 import React from "react";
 import { useHistory } from "react-router";
 import { Button } from "../../components";
+import checkToken from "../../App"
 
 const ProfileSetup = () => {
   let history = useHistory();
@@ -9,17 +10,7 @@ const ProfileSetup = () => {
     history.push("/profilelanding");
   };
 
-const BASE_URL = "localhost:3000";
-const USER_URL = "localhost:3000/profile";
-
-const token = localStorage.getItem("token");
-
-function checkToken() {
-	if (!token) {
-		history.push("/loginlanding");
-		return;
-	}
-}
+checkToken()
 
   return (
     <div className="body">

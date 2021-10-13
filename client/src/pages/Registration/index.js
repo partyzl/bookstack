@@ -2,6 +2,7 @@ import React from "react";
 import { useHistory } from "react-router";
 import { Button } from "../../components";
 import "../Login/styles.css";
+import requestRegistration from "../../actions/registerauth"
 
 const Registration = () => {
   let history = useHistory();
