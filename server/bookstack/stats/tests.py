@@ -1,5 +1,7 @@
-from django.test import TestCase, APIRequestFactory, Client
 from django.contrib.auth.models import User
+from django.test import RequestFactory, TestCase
+
+from .views import Stats
 from .models import UserStats
 
 # Create your tests here.
@@ -15,14 +17,18 @@ from .models import UserStats
 
 
 class BaseTestCase(TestCase):
-    @classmethod
     def setUpTestData(self):
+
+        self.factory = RequestFactory()
         self.user = User.objects.create(
             username="test", email="test@test", password="testy"
         )
+        """
         self.user2 = User.objects.create(
             username="test2", email="test2@test", password="testy2"
         )
+        """
+
         self.test_stats = UserStats.objects.create(
             user_id=self.user,
             pages_per_day=5,
@@ -35,9 +41,11 @@ class BaseTestCase(TestCase):
 
 
 class TestUserStatsViews(BaseTestCase):
-    """factory = APIRequestFactory()"""
-
-    c = Client()
+    def test_details(self):
+        req = self.factory.get(f"/profiles/{self.user}/stats")
+        req.user = self.user
+        response = Stats.as_view()(req)
+        self.assertEqual(response.status_code, 200)
 
     def test_status_code_200(self):
         res = self.c.get(f"/profiles/{self.user.username}/stats")
@@ -56,7 +64,7 @@ class TestUserStatsViews(BaseTestCase):
 
     def test_post_user_stats(self):
         req = (
-            APIRequestFactory.post(
+            RequestFactory.post(
                 f"/profiles/{self.user2.username}/stats",
                 {
                     "user_id": self.user2,
