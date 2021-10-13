@@ -9,7 +9,7 @@
   background-position: center;
   background-repeat: no-repeat;
   background-size: cover;
-  font-family: karumbi, sans-serif;
+  font-family: "Barlow Condensed", sans-serif;
   font-style: normal;
   font-weight: 400;
   font-size: 35px;
@@ -30,4 +30,3 @@
 .App-link {
   color: #61dafb;
 }
-
