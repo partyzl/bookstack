@@ -1,7 +1,8 @@
 import React from "react";
-import { BookCard } from "../../../components";
-import DropDown from "../../../components/Dropdown";
+import { BookCard } from "../../components";
+import DropDown from "../../components/Dropdown";
 import { Books } from "../../components";
+
 
 const CompletedBook = () => {
   return (

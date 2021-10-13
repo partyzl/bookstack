@@ -24,6 +24,10 @@
   border: solid, 1px, #f8d8cf;
 }
 
+.navbar i:hover {
+  color: rgb(255, 244, 189);
+}
+
 @media (min-width: 600px) {
   .navbar {
     position: fixed;
