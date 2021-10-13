@@ -1,7 +1,15 @@
 import "./App.css";
 import { Switch, Route } from "react-router-dom";
-import { Login, Registration, ProfileSetup, Profile, Home, Search, CurrentReads } from "./pages";
-import { Landing, ToBeRead } from "./pages/Library";
+import {
+  Home,
+  Login,
+  Registration,
+  ProfileSetup,
+  Profile,
+  Search,
+  LibraryLanding,
+  ToBeRead,
+} from "./pages";
 import { BookContextProvider } from "./context/bookContext";
 
 function App() {
@@ -9,40 +17,33 @@ function App() {
     <BookContextProvider>
       <div className="App">
         <Switch>
-          {/* Account Creation Routes */}
+          <Route exact path="/">
+            <Home />
+          </Route>
           <Route path="/login">
             <Login />
           </Route>
-
-          <Route path="/registration">
+          <Route path="/register">
             <Registration />
           </Route>
-
-          <Route path="/profile-setup">
-           <ProfileSetup />
+          <Route path="/profilesetup">
+            <ProfileSetup />
           </Route>
-
-          {/* NAVBAR ROUTES */}
-          <Route exact path="/">
-            <Home />
+          <Route path="/profilelanding">
+            <Profile />
           </Route>
           <Route path="/search">
             <Search />
           </Route>
-          <Route path="/profile">
-           <Profile />
+          <Route path="/librarylanding">
+            <LibraryLanding />
           </Route>
-
-          {/* Library Routes*/}
-          <Route path="/library">
-            <Landing />
-          </Route>
-          <Route exact path="/toberead">
+          <Route path="/toberead">
             <ToBeRead />
           </Route>
-          <Route exact path="/currentreads">
+          {/* <Route exact path="/currentreads">
             <CurrentReads />
-          </Route>
+          </Route> */}
 
           
 
@@ -62,6 +63,7 @@ function App() {
            <Route>
            <NotFound404 />
           </Route>  */}
+
         </Switch>
       </div>
     </BookContextProvider>

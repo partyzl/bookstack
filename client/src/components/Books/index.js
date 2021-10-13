@@ -5,20 +5,18 @@ import { BookContext } from "../../context/bookContext";
 const Books = () => {
   const [book, setBook] = useContext(BookContext);
   return (
-    <>
+    <div className="row">
       {book.map((book) => (
         <BookCard
-          key={book.id}
+          key={book.key}
           title={book.title}
           author={book.author}
           cover={book.image}
-          genre={book.categories}
-          published={book.publishedDate}
-
-         
+          genre={book.genre}
+          published={book.publish}
         />
       ))}
-    </>
+    </div>
   );
 };
 
