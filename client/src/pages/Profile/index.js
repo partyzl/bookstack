@@ -1,5 +1,6 @@
 import React from "react";
 import { Nav, SimpleSlider } from "../../components";
+import "./styles.css";
 
 const Profile = () => {
   return (
@@ -15,7 +16,7 @@ const Profile = () => {
       />
 
       {/* username */}
-      <h2>placeholder username</h2>
+      <h4>placeholder username</h4>
 
       <h4>Favourite Character: </h4>
       {/* will be pulled from db */}
