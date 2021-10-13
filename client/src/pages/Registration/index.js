@@ -101,14 +101,12 @@ const Registration = () => {
             setConfirmPassword(e.target.value);
           }}
         />
-<<<<<<< HEAD
         <Button
           type="submit"
           className={"btn btn-light col-sm-2 mb-3"}
           // onClick={setup}
           onClick={requestRegistration}
-        >
-=======
+        ></Button>
         {error && (
           <>
             <br />
@@ -116,7 +114,6 @@ const Registration = () => {
           </>
         )}
         <Button type="submit" className={"btn btn-light col-sm-2 mb-3"}>
->>>>>>> eac68df93e0673f14760f994285a9434c5f2325b
           Register
         </Button>
       </form>
