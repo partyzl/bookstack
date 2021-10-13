@@ -5,7 +5,7 @@ from django.contrib.auth.models import User
 from books.models import Book
 from .models import UserStats
 from .serializers import UserStatsSerializer
-
+from rest_framework.permissions import IsAuthenticated
 import json
 import math
 
