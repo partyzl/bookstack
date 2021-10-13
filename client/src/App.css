@@ -1,6 +1,7 @@
+@import url("https://use.typekit.net/sud7gtj.css");
 .App {
   text-align: center;
-  background: url("./images/Friendly\ Ones\ -\ Friendly\ Squiggles.png") !important;
+  background: url("./images/Screenshot\ 2021-10-13\ at\ 10.00.41.png") !important;
   height: 100vh;
   width: 100%;
   overflow: auto;
@@ -8,6 +9,10 @@
   background-position: center;
   background-repeat: no-repeat;
   background-size: cover;
+  font-family: karumbi, sans-serif;
+  font-style: normal;
+  font-weight: 400;
+  font-size: 35px;
 }
 
 .App-header {

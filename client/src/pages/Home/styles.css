@@ -5,7 +5,10 @@
   margin-top: 50vh;
 }
 
-.button:hover {
+.btn {
+  font-size: 5vh;
+}
+.btn:hover {
   background-color: #fff4bd;
   transition-duration: 4s;
 }
