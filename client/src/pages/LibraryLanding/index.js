@@ -1,6 +1,7 @@
 import React from "react";
 import { useHistory } from "react-router";
 import { Button, Nav } from "../../components";
+import "./styles.css";
 
 const LibraryLanding = () => {
   let history = useHistory();
