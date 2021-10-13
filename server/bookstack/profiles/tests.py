@@ -19,3 +19,6 @@ class TestUserProfile(BaseTestCase):
 
         response = Profiles.as_view()(req)
         self.assertEqual(response.status_code, 200)
+
+    def test_create_profile(self):
+        Hugo = User.objects.create(username="test_user2")
