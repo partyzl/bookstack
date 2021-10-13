@@ -22,17 +22,18 @@ const Login = () => {
 
   async function requestLogin(e) {
     e.preventDefault();
+    console.log(e)
     try {
       const options = {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({
-          email: e.target.email.value,
-          password: e.target.password.value
+          username: e.target.form.username.value,
+          password: e.target.form.password.value
         })
       };
       const r = await fetch(
-        `${serverUrl}/login`,
+        `${serverUrl}/login/`,
         options
       );
       const data = await r.json();
@@ -40,7 +41,8 @@ const Login = () => {
       if (!data.success) {
         throw new Error("Login not authorised");
       }
-      login(data.token);
+      console.log("Logging in")
+      // login(data.token);
     } catch (err) {
       console.warn(err);
     }
@@ -62,11 +64,11 @@ const Login = () => {
     <div className="body">
       {/* <Header /> */}
       <form>
-        <input type="text" placeholder="Enter username" name="username" />
+        <input type="text" placeholder="Enter username" id="username" name="username" />
         <br />
         {/* <input type="text" placeholder="Enter email" name="email" />
         <br /> */}
-        <input type="password" placeholder="Password" name="password" />
+        <input type="password" placeholder="Password" id="password" name="password" />
         <Button
           type="submit"
           className={"btn btn-light col-sm-2 mb-3"}
