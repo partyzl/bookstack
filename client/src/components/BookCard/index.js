@@ -2,14 +2,19 @@ import { React } from "react";
 import { useHistory } from "react-router";
 import "./styles.css";
 import { Button } from "../index";
+import CurrentReads from "../../pages/CurrentReads";
 // import { CurrentReads } from "../../pages";
 
 const BookCard = ({ key, title, cover, author, genre, published }) => {
   let history = useHistory();
 
   const addBook = () => {
-    history.push("/currentread");
+    history.push("/currentreads");
+    console.log("you have added a book", {title},{author},{genre})
   };
+
+
+
 
   return (
     <div className="col-12 col-md-6 col-lg-3 mb-3">
