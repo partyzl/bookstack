@@ -15,6 +15,18 @@ const Home = () => {
 
   return (
     <div className="body">
+      <p className="title overlay">
+        <span className="color1">B</span>
+        <span className="color2">o</span>
+        <span className="color3">o</span>
+        <span className="color4">k</span>
+        <span className="color1">s</span>
+        <span className="color2">t</span>
+        <span className="color3">a</span>
+        <span className="color4">c</span>
+        <span className="color1">k</span>
+      </p>
+
       <div className="buttonContainer">
         <Button
           type="button"

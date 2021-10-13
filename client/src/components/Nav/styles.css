@@ -6,7 +6,7 @@
   justify-content: space-evenly;
   transition: 0.5s ease;
   position: fixed;
-  background-color: rgba(219, 117, 88, 0.4);
+  background-color: #acd8cb;
   align-content: center;
   height: 10vh;
 }

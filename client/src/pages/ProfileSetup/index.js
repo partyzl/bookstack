@@ -5,8 +5,8 @@ import { Button } from "../../components";
 const ProfileSetup = () => {
   let history = useHistory();
 
-  const home = () => {
-    history.push("/profilelanding");
+  const search = () => {
+    history.push("/search");
   };
 
   return (
@@ -19,7 +19,7 @@ const ProfileSetup = () => {
         <Button
           type="submit"
           className={"btn btn-light col-sm-2 mb-3"}
-          onClick={home}
+          onClick={search}
         >
           Next
         </Button>
@@ -27,7 +27,7 @@ const ProfileSetup = () => {
       <Button
         type="button"
         className={"btn btn-light col-sm-1 mb-3"}
-        onClick={home}
+        onClick={search}
       >
         Skip
       </Button>
