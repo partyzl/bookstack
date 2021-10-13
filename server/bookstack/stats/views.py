@@ -6,6 +6,7 @@ from books.models import Book
 from .models import UserStats
 from .serializers import UserStatsSerializer
 
+import json
 import math
 
 # Create your views here.
@@ -43,12 +44,12 @@ class Stats(APIView):
             print(reading_time)
             avg_book_length = round(pages_read / finished_total)
             print(avg_book_length)
-            pages_per_day = round(pages_read / reading_time) 
-            avg_book_time = round(reading_time / finished_total, 2)
+            pages_per_day = round(pages_read / reading_time, 1) 
+            avg_book_time = round(reading_time / finished_total)
 
-            genre_list = list(Book.objects.raw('SELECT id, genre, count(genre) FROM books_book GROUP by genre'))
-
-            #get favourite era
+            genre_list = list(Book.objects.raw('SELECT id, genre, count(genre) FROM books_book GROUP by genre ORDER BY count(genre) DESC LIMIT 1'))
+            fav_genre = genre_list[0].__dict__["genre"]
+           
             publish_years = list(Book.objects.raw('SELECT id, publish_year FROM books_book'))
             decades_list = list(map(self.rounding, publish_years))
             fav_era = self.most_common_decade(decades_list)
@@ -58,8 +59,11 @@ class Stats(APIView):
                 "avg_book_time": avg_book_time,
                 "avg_book_length": avg_book_length,
                 "total_books_read": finished_total,
-                "fav_era": fav_era
+                "fav_era": fav_era,
+                "genres": fav_genre
+              
             })
+
 
     def rounding(self, year_object):
         year = year_object.__dict__["publish_year"]
