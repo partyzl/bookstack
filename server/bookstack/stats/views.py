@@ -32,26 +32,24 @@ class Stats(APIView):
             return Response(serializer.data, status=status.HTTP_202_ACCEPTED)
         return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
 
-    def update_user_stats(self, username):
-        finished_books = list(Book.objects.raw('SELECT * FROM Book WHERE date_finished IS NOT NULL'))#insert query for books that have a not null finished date.
-        finished_total = len(finished_books)
-        [reading_time, pages_read] = self.get_reading_data(finished_books)
-
-        pages_per_day = pages_read / reading_time 
-        avg_book_time = reading_time / finished_total
-
-        genre_list = list(Book.objects.raw('SELECT genre, count(genre) FROM Book GROUP by genre'))
-
-        #get favourite era
-        publish_years = list(Book.objects.raw('SELECT publish_year FROM Book'))
-        decades_list = map(self.rounding, publish_years)
-        fav_era = self.most_common_decade(decades_list)
-
+   
 
 
 #------------------------------HELPER FUNCTIONS-----------------------------#
+    def update_user_stats(self, username):
+            finished_books = list(Book.objects.raw('SELECT * FROM Book WHERE date_finished IS NOT NULL'))#insert query for books that have a not null finished date.
+            finished_total = len(finished_books)
+            [reading_time, pages_read] = self.get_reading_data(finished_books)
 
+            pages_per_day = pages_read / reading_time 
+            avg_book_time = reading_time / finished_total
 
+            genre_list = list(Book.objects.raw('SELECT genre, count(genre) FROM Book GROUP by genre'))
+
+            #get favourite era
+            publish_years = list(Book.objects.raw('SELECT publish_year FROM Book'))
+            decades_list = map(self.rounding, publish_years)
+            fav_era = self.most_common_decade(decades_list)
 
     def rounding(year_object):
         return math.floor(year_object / 10) * 10

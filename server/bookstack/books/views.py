@@ -27,22 +27,22 @@ class UserBooks(APIView):
         return Response(serializer.data, status=status.HTTP_200_OK)
 
     def post(self, request, username, format=None):
-        user = User.objects.get(username=username)
+        user = User.objects.get(username=username) 
         book_serializer = BookSerializer(data=request.data)
 
         if list(Book.objects.filter(user_id=user.id, title=request.data["title"])):
             return Response('you already have this book', status=status.HTTP_400_BAD_REQUEST)
 
-        if book_serializer.is_valid():
+        elif book_serializer.is_valid():
             book_serializer.save()
+
             if list(BookStats.objects.filter(title=book_serializer.data["title"])):
                 return Response(book_serializer.data, status=status.HTTP_201_CREATED)
+
             stats_serializer = BookStatsSerializer(data=request.data)
             if stats_serializer.is_valid():
                 stats_serializer.save()
-            return Response(
-                {"book": book_serializer.data, "book_stats": stats_serializer.data}, status=status.HTTP_201_CREATED
-            )
+            return Response( {"book": book_serializer.data, "book_stats": stats_serializer.data}, status=status.HTTP_201_CREATED )
         return Response(book_serializer.errors, status=status.HTTP_400_BAD_REQUEST)
         
         
@@ -69,14 +69,16 @@ class UserBooksDetail(APIView):
             serializer.save()
             book_stats_object = BookStats.objects.get(title=title)
             current_stats = BookStatsSerializer(book_stats_object)
+            print(current_stats.data)
             update_1 = self.update_count(current_stats.data)
-            update_2 = self.update_avg_rating(update_1)
+            print(update_1)
+            #update_2 = self.update_avg_rating(update_1)
 
 
-            book_stats_serializer = BookStatsSerializer(book_stats_object, data=update_2)
-            
-         
-            book_stats_serializer.save()
+            book_stats_serializer = BookStatsSerializer(book_stats_object, data=update_1)
+            if book_stats_serializer.is_valid():
+
+                book_stats_serializer.save()
 
             return Response(serializer.data, status=status.HTTP_202_ACCEPTED)
         return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
@@ -89,8 +91,8 @@ class UserBooksDetail(APIView):
     # helper funcs
 
     def update_count(self, book_stats):
-        new_stats = book_stats["book_count"] + 1
-        return new_stats
+        book_stats["book_count"] += 1
+        return book_stats
 
     def update_avg_rating(self, book_stats):
         book_stats["avg_rating"] = int(list(Book.objects.raw('SELECT AVG(ALL rating) FROM Book'))[0])
