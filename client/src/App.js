@@ -41,29 +41,6 @@ function App() {
           <Route path="/toberead">
             <ToBeRead />
           </Route>
-          {/* <Route exact path="/currentreads">
-            <CurrentReads />
-          </Route> */}
-
-          
-
-          {/* <Route path="/completedreads">
-            <CompletedReads />
-
-           
-
-          {/* <Route path="/profile">
-           <Profile />
-           </Route>
-           
-           <Route path="/">
-           < />
-           </Route>
-           
-           <Route>
-           <NotFound404 />
-          </Route>  */}
-
         </Switch>
       </div>
     </BookContextProvider>
