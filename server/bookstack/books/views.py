@@ -10,8 +10,23 @@ from django.contrib.auth.models import User
 # Create your views here.
 class Books(APIView):
     def get(self, request, format=None):
-        # query for the most popular
-        return Response()
+        popular_book_stats = list(BookStats.objects.raw('SELECT * FROM books_bookstats ORDER BY book_count DESC LIMIT 10'))
+        top_ten_books = list(map(self.extract_popular_books, popular_book_stats))
+    
+        print(top_ten_books)
+        return Response(top_ten_books)
+
+    def extract_popular_books(self, bookstat_object):
+        title = bookstat_object.__dict__["title"]
+        book = list(Book.objects.filter(title=title))[0]
+        book_dict =  ({
+            "title": title,
+            "author": book.__dict__["author"],
+            "cover": book.__dict__["cover"],
+            "genre": book.__dict__["genre"],
+            "avg_rating": bookstat_object.__dict__["avg_rating"]
+        })        
+        return book_dict
 
 
 class UserBooks(APIView):
@@ -45,6 +60,7 @@ class UserBooks(APIView):
                 stats_serializer.save()
             return Response( {"book": book_serializer.data, "book_stats": stats_serializer.data}, status=status.HTTP_201_CREATED )
         return Response(book_serializer.errors, status=status.HTTP_400_BAD_REQUEST)
+        
         
         
 
