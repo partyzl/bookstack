@@ -4,13 +4,10 @@ import { Button } from "../../components";
 // import { Header } from "../../../layout";
 import "./styles.css";
 import jwt_decode from 'jwt-decode';
+import { login } from "../../actions/loginauth";
 
 const Login = () => {
   let history = useHistory();
-
-  const profilelanding = () => {
-    history.push("/profilelanding");
-  };
 
   const register = () => {
     history.push("/register");
@@ -44,15 +41,6 @@ const Login = () => {
     } catch (err) {
       console.warn(err);
     }
-  }
-
-  function login(token, username) {
-    //const user = jwt_decode(token);
-    localStorage.setItem("token", token);
-    localStorage.setItem("username", username);
-    // localStorage.setItem("email", user.email);
-    // localStorage.setItem("id", user.id);
-    profilelanding();
   }
   // will make this consider auth when we link to backend
   // something along the lines of
