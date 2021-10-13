@@ -1,11 +1,15 @@
 import React from "react";
+import "./styles.css";
 
-import {LibraryCard} from "../../components/LibraryCard";
+import { LibraryCard, Nav } from "../../components/";
 
 const ToBeRead = () => {
   return (
     <div>
-      <LibraryCard />
+      <Nav />
+      <div className="cardContainer">
+        <LibraryCard />
+      </div>
     </div>
   );
 };
