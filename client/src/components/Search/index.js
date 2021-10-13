@@ -3,6 +3,7 @@ import React, { useState, useContext } from "react";
 import axios from "axios";
 import { BookContext } from "../../context/bookContext";
 import { Books } from "../index";
+import "./styles.css"
 
 const Search = () => {
   const [title, setTitle] = useState("");
