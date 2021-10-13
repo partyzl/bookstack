@@ -1,3 +1,1 @@
 web: gunicorn bookstack.wsgi
-release: python bookstack/manage.py makemigrations -noinput
-release: python bookstack/manage.py migrate -noinput
