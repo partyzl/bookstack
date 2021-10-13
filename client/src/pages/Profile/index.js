@@ -1,5 +1,5 @@
 import React from "react";
-import { Nav, SimpleSlider } from "../../components";
+import { Nav } from "../../components";
 import "./styles.css";
 
 const Profile = () => {
@@ -9,7 +9,7 @@ const Profile = () => {
 
       {/* profile picture */}
       <img
-        alt="profile picture"
+        alt="profile"
         src={`https://avatars.dicebear.com/api/gridy/${
           Math.floor(Math.random() * 90000) + 10000
         }.svg`}

@@ -1,11 +1,13 @@
-import React from 'react';
+import React from "react";
+
+import {LibraryCard} from "../../components/LibraryCard";
 
 const ToBeRead = () => {
-    return (
-        <div>
-            
-        </div>
-    );
-}
+  return (
+    <div>
+      <LibraryCard />
+    </div>
+  );
+};
 
 export default ToBeRead;
