@@ -4,17 +4,62 @@ from rest_framework import status
 from .models import Book, BookStats
 from .serializers import BookSerializer, BookStatsSerializer
 from django.contrib.auth.models import User
+from rest_framework.permissions import IsAuthenticated
 
 
 
 # Create your views here.
 class Books(APIView):
+    Permission_classes = [IsAuthenticated]
     def get(self, request, format=None):
-        # query for the most popular
-        return Response()
+        popular_book_stats = list(BookStats.objects.raw('SELECT * FROM books_bookstats ORDER BY book_count DESC LIMIT 10'))
+        top_ten_books = list(map(self.extract_popular_books, popular_book_stats))
+    
+        print(top_ten_books)
+        return Response(top_ten_books)
+
+    def extract_popular_books(self, bookstat_object):
+        title = bookstat_object.__dict__["title"]
+        book = list(Book.objects.filter(title=title))[0]
+        book_dict =  ({
+            "title": title,
+            "author": book.__dict__["author"],
+            "cover": book.__dict__["cover"],
+            "genre": book.__dict__["genre"],
+            "avg_rating": bookstat_object.__dict__["avg_rating"]
+        })        
+        return book_dict
+
+
+class UserTBR(APIView):
+    Permission_classes = [IsAuthenticated]
+    def get(self, request, username, format=None):
+        user = User.objects.get(username=username)
+        tbr = list(Book.objects.raw('SELECT * FROM books_book WHERE user_id_id IS %s AND date_started IS NULL', [user.id]))
+        serializer = BookSerializer(tbr, many=True)
+        return Response(serializer.data, status=status.HTTP_200_OK)
+
+
+class UserRead(APIView):
+    permission_classes = [IsAuthenticated]
+    def get(self, request, username, format=None):
+        user = User.objects.get(username=username)
+        read = list(Book.objects.raw('SELECT * FROM books_book WHERE user_id_id IS %s AND date_finished IS NOT NULL', [user.id]))
+        serializer = BookSerializer(read, many=True)
+        return Response(serializer.data, status=status.HTTP_200_OK)
+
+
+class UserCurrent(APIView):
+    Permission_classes = [IsAuthenticated]
+    def get(self, request, username, format=None):
+        user = User.objects.get(username=username)
+        read = list(Book.objects.raw('SELECT * FROM books_book WHERE user_id_id IS %s AND date_started IS NOT NULL AND date_finished IS NULL', [user.id]))
+        serializer = BookSerializer(read, many=True)
+        return Response(serializer.data, status=status.HTTP_200_OK)
 
 
 class UserBooks(APIView):
+    Permission_classes = [IsAuthenticated]
     def get_object(self, username):
         try:
             user = User.objects.get(username=username)
@@ -47,9 +92,11 @@ class UserBooks(APIView):
         return Response(book_serializer.errors, status=status.HTTP_400_BAD_REQUEST)
         
         
+        
 
 
 class UserBooksDetail(APIView):
+    Permission_classes = [IsAuthenticated]
     def get_object(self, username, book_id):
         try:
             user = User.objects.get(username=username)
