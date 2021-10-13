@@ -9,6 +9,8 @@ import {
   Search,
   LibraryLanding,
   ToBeRead,
+  CurrentReads,
+  Error404,
 } from "./pages";
 import { BookContextProvider } from "./context/bookContext";
 import { useHistory } from "react-router";
@@ -59,6 +61,10 @@ function App() {
           <Route path="/toberead">
             <ToBeRead />
           </Route>
+          <Route path="/currentreads">
+            <CurrentReads />
+          </Route>
+          <Error404 />
         </Switch>
       </div>
     </BookContextProvider>

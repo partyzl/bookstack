@@ -11,7 +11,11 @@ whitenoise = "*"
 gunicorn = "*"
 django-heroku = "*"
 psycopg2-binary = "*"
+<<<<<<< HEAD
 djangorestframework-jwt = "*"
+=======
+pillow = "*"
+>>>>>>> eac68df93e0673f14760f994285a9434c5f2325b
 django-cors-headers = "*"
 
 [dev-packages]

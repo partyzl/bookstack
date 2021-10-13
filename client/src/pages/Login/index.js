@@ -13,7 +13,7 @@ const Login = () => {
   };
 
   const register = () => {
-    history.push("/registration");
+    history.push("/register");
   };
 
   const siteUrl = `http://localhost:3000`

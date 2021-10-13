@@ -6,8 +6,8 @@ import checkToken from "../../App"
 const ProfileSetup = () => {
   let history = useHistory();
 
-  const home = () => {
-    history.push("/profilelanding");
+  const search = () => {
+    history.push("/search");
   };
 
 checkToken()
@@ -22,7 +22,7 @@ checkToken()
         <Button
           type="submit"
           className={"btn btn-light col-sm-2 mb-3"}
-          onClick={home}
+          onClick={search}
         >
           Next
         </Button>
@@ -30,7 +30,7 @@ checkToken()
       <Button
         type="button"
         className={"btn btn-light col-sm-1 mb-3"}
-        onClick={home}
+        onClick={search}
       >
         Skip
       </Button>
