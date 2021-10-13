@@ -50,7 +50,7 @@ INSTALLED_APPS = [
     "profiles.apps.ProfilesConfig",
     "stats.apps.StatsConfig",
     "books.apps.BooksConfig",
-    'rest_framework.authtoken',
+    
 
 ]
 
