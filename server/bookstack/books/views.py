@@ -4,11 +4,13 @@ from rest_framework import status
 from .models import Book, BookStats
 from .serializers import BookSerializer, BookStatsSerializer
 from django.contrib.auth.models import User
+from rest_framework.permissions import IsAuthenticated
 
 
 
 # Create your views here.
 class Books(APIView):
+    Permission_classes = [IsAuthenticated]
     def get(self, request, format=None):
         popular_book_stats = list(BookStats.objects.raw('SELECT * FROM books_bookstats ORDER BY book_count DESC LIMIT 10'))
         top_ten_books = list(map(self.extract_popular_books, popular_book_stats))
@@ -30,6 +32,7 @@ class Books(APIView):
 
 
 class UserTBR(APIView):
+    Permission_classes = [IsAuthenticated]
     def get(self, request, username, format=None):
         user = User.objects.get(username=username)
         tbr = list(Book.objects.raw('SELECT * FROM books_book WHERE user_id_id IS %s AND date_started IS NULL', [user.id]))
@@ -38,6 +41,7 @@ class UserTBR(APIView):
 
 
 class UserRead(APIView):
+    permission_classes = [IsAuthenticated]
     def get(self, request, username, format=None):
         user = User.objects.get(username=username)
         read = list(Book.objects.raw('SELECT * FROM books_book WHERE user_id_id IS %s AND date_finished IS NOT NULL', [user.id]))
@@ -46,7 +50,8 @@ class UserRead(APIView):
 
 
 class UserCurrent(APIView):
-       def get(self, request, username, format=None):
+    Permission_classes = [IsAuthenticated]
+    def get(self, request, username, format=None):
         user = User.objects.get(username=username)
         read = list(Book.objects.raw('SELECT * FROM books_book WHERE user_id_id IS %s AND date_started IS NOT NULL AND date_finished IS NULL', [user.id]))
         serializer = BookSerializer(read, many=True)
@@ -54,6 +59,7 @@ class UserCurrent(APIView):
 
 
 class UserBooks(APIView):
+    Permission_classes = [IsAuthenticated]
     def get_object(self, username):
         try:
             user = User.objects.get(username=username)
@@ -90,6 +96,7 @@ class UserBooks(APIView):
 
 
 class UserBooksDetail(APIView):
+    Permission_classes = [IsAuthenticated]
     def get_object(self, username, book_id):
         try:
             user = User.objects.get(username=username)

@@ -11,6 +11,7 @@ import math
 
 # Create your views here.
 class Stats(APIView):
+    Permission_classes = [IsAuthenticated]
 
     def get_objects(self, username):
         user = User.objects.get(username=username)

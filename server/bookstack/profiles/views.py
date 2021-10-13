@@ -5,13 +5,16 @@ from .serializers import ProfileSerializer, ProfileAvatarSerializer
 from stats.serializers import UserStatsSerializer
 from rest_framework import status
 from django.http import Http404
-from django.contrib.auth.models import User
+from django.contrib.auth.models import Permission, User
 from rest_framework import parsers
+from rest_framework.permissions import IsAuthenticated
 
 # Create your views here.
 
 
 class CreateProfile(APIView):
+    Permission_classes = [IsAuthenticated]
+    
     def post(self, request, format=None):
 
         prof_serializer = ProfileSerializer(data=request.data)
@@ -29,6 +32,8 @@ class CreateProfile(APIView):
 
 
 class Profiles(APIView):
+    Permission_classes = [IsAuthenticated]
+
     parser_classes = (parsers.FormParser, parsers.MultiPartParser)
 
     def get_object(self, username):
