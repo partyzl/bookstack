@@ -1,34 +1,50 @@
 import React from "react";
-import { Nav, SimpleSlider } from "../../components";
+import { Nav, Button, SimpleSlider } from "../../components";
+import { useHistory } from "react-router";
 import "./styles.css";
 
 const Profile = () => {
-  return (
-    <div className="body">
-      <Nav />
+    let history = useHistory();
 
-      {/* profile picture */}
-      <img
-        alt="profile picture"
-        src={`https://avatars.dicebear.com/api/gridy/${
-          Math.floor(Math.random() * 90000) + 10000
-        }.svg`}
-      />
+    // will send user to account setup
+    const setup = () => {
+      history.push("/profilesetup");
+    };
 
-      {/* username */}
-      <h4>placeholder username</h4>
+    return (
+        <div className="body">
+            <Nav />
 
-      <h4>Favourite Character: </h4>
-      {/* will be pulled from db */}
-      {/* <h5>{}</h5> */}
+            {/* profile picture */}
+            <img
+                alt="profile picture"
+                src={`https://avatars.dicebear.com/api/gridy/${
+                Math.floor(Math.random() * 90000) + 10000
+                }.svg`}
+            />
 
-      <h4>Favourite Quote: </h4>
-      {/* will be pulled from db */}
-      {/* <h5>{}</h5> */}
+            {/* username */}
+            <h4>placeholder username</h4>
 
-      <h4>Books currently being read: </h4>
-      {/* <SimpleSlider /> */}
-    </div>
+            <h4>Favourite Character: </h4>
+            {/* will be pulled from db */}
+            {/* <h5>{}</h5> */}
+
+            <h4>Favourite Quote: </h4>
+            {/* will be pulled from db */}
+            {/* <h5>{}</h5> */}
+
+            <h4>Books currently being read: </h4>
+            {/* <SimpleSlider /> */}
+
+            <Button
+                type="submit"
+                className={"btn btn-light col-sm-2 mb-3"}
+                onClick={setup}
+            >
+                Edit
+            </Button>
+        </div>
   );
 };
 
