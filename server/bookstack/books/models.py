@@ -10,14 +10,14 @@ class Book(models.Model):
     title = models.CharField(max_length=500)
     user_id = models.ForeignKey(User, on_delete=models.SET_NULL, null=True)
     author = models.CharField(max_length=50)
-    cover = models.ImageField()
+    cover = models.ImageField(upload_to="covers", blank=True)
     page_num = models.IntegerField()
     genre = models.CharField(max_length=100)
     publish_year = models.IntegerField()
-    rating = models.IntegerField()
-    date_started = models.DateField(auto_now_add=True)
-    date_finished = models.DateField()
-    private = models.BooleanField(default=True)
+    rating = models.IntegerField(null=True)
+    date_started = models.DateField(null=True)
+    date_finished = models.DateField(null=True)
+    private = models.BooleanField(default=False)
     user_notes = models.CharField(max_length=5000, null=True, blank=True)
 
     def __str__(self):
@@ -25,9 +25,9 @@ class Book(models.Model):
 
 
 class BookStats(models.Model):
-    title = models.ForeignKey(Book, on_delete=models.SET_NULL, null=True)
-    avg_rating = models.IntegerField()
-    book_count = models.IntegerField()
+    title = models.CharField(max_length=500, null=True)
+    avg_rating = models.IntegerField(null=True)
+    book_count = models.IntegerField(default=1)
 
     def __str__(self):
-        return f"{self.title} is rated at {self.rating}"
+        return f"{self.title} is rated at {self.avg_rating}"
