@@ -1,0 +1,41 @@
+.navbar {
+  display: flex;
+  width: 100%;
+  padding: 30px;
+  padding-bottom: 20px;
+  justify-content: space-evenly;
+  transition: 0.5s ease;
+  position: fixed;
+  background-color: rgba(255, 255, 255, 0.922);
+  border: 3px solid gray;
+  border-bottom-left-radius: 20px;
+  border-bottom-right-radius: 20px;
+  align-content: center;
+  height: 10vh;
+}
+.navContainer {
+  display: flex;
+}
+.nav-text {
+  display: none;
+}
+
+.navbar i {
+  font-size: 3rem;
+  color: black;
+}
+
+@media (min-width: 600px) {
+  .navbar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 50;
+    width: 100%;
+  }
+
+  h4.nav-text {
+    display: contents;
+  }
+}
