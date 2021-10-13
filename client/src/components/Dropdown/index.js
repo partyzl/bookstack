@@ -4,13 +4,16 @@ const DropDown = ({ onClick, value, className }) => {
     return (
         <div>
         <label for="ratings">Rate your book: </label>
-        <select name="ratings" id="ratings">
-            <option value="must-read">Must Read!</option>
-            <option value="good">Pretty good</option>
-            <option value="average">Average</option>
-            <option value="bad">Bad</option>
-            <option value="wouldnt-recommend">Would not recommed</option>
-        </select>
+        <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
+            Ratings
+        </button>
+        <ul class="dropdown-menu">
+            <li class="dropdown-item">😍</li>
+            <li class="dropdown-item">😬</li>
+            <li class="dropdown-item">😫</li>
+            <li class="dropdown-item">😊</li>
+            <li class="dropdown-item">👎</li>
+        </ul>
         </div>
     );
 };
