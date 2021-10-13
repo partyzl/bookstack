@@ -49,3 +49,10 @@ class TestUserStatsViews(BaseTestCase):
         assert data[0]["total_books_read"] == "10"
         assert data[0]["genres"] == "horror_test"
         assert data[0]["fav_era"] == 1990
+
+    def test_update_user_stats(self):
+        res = self.c.put(
+            f"/profiles/{self.user.username}/stats", {"fav_era": 2000}
+        )
+        data = res.json()
+        assert data[0]["fav_era"] == 2000
