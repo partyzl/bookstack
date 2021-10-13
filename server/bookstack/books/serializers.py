@@ -6,6 +6,8 @@ class BookSerializer(serializers.ModelSerializer):
     class Meta:
         model = Book
         fields = (
+            "id",
+            "user_id",
             "title",
             "author",
             "cover",
@@ -22,4 +24,4 @@ class BookSerializer(serializers.ModelSerializer):
 class BookStatsSerializer(serializers.ModelSerializer):
     class Meta:
         model = BookStats
-        fields = ("avg_rating", "book_count")
+        fields = ("title", "avg_rating", "book_count")
