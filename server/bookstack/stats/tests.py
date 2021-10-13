@@ -1,4 +1,4 @@
-from django.test import TestCase, RequestFactory, Client
+from django.test import TestCase, APIRequestFactory, Client
 from django.contrib.auth.models import User
 from .models import UserStats
 
@@ -20,6 +20,9 @@ class BaseTestCase(TestCase):
         self.user = User.objects.create(
             username="test", email="test@test", password="testy"
         )
+        self.user2 = User.objects.create(
+            username="test2", email="test2@test", password="testy2"
+        )
         self.test_stats = UserStats.objects.create(
             user_id=self.user,
             pages_per_day=5,
@@ -32,7 +35,8 @@ class BaseTestCase(TestCase):
 
 
 class TestUserStatsViews(BaseTestCase):
-    factory = RequestFactory()
+    """factory = APIRequestFactory()"""
+
     c = Client()
 
     def test_status_code_200(self):
@@ -49,6 +53,25 @@ class TestUserStatsViews(BaseTestCase):
         assert data[0]["total_books_read"] == "10"
         assert data[0]["genres"] == "horror_test"
         assert data[0]["fav_era"] == 1990
+
+    def test_post_user_stats(self):
+        req = (
+            APIRequestFactory.post(
+                f"/profiles/{self.user2.username}/stats",
+                {
+                    "user_id": self.user2,
+                    "pages_per_day": 5,
+                    "avg_book_time": 100,
+                    "avg_book_length": 25,
+                    "total_books_read": 10,
+                    "genres": "horror_test",
+                    "fav_era": 1990,
+                },
+                format="json",
+            ),
+        )
+
+        """need to assert here"""
 
     def test_update_user_stats(self):
         res = self.c.put(
