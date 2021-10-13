@@ -41,3 +41,8 @@ img {
   object-fit: contain;
   max-height: 20vh;
 }
+
+.btn-light {
+  background-color: rgb(255, 244, 189);
+  font-size: 5vh;
+}
