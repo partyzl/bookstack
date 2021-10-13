@@ -29,6 +29,30 @@ class Books(APIView):
         return book_dict
 
 
+class UserTBR(APIView):
+    def get(self, request, username, format=None):
+        user = User.objects.get(username=username)
+        tbr = list(Book.objects.raw('SELECT * FROM books_book WHERE user_id_id IS %s AND date_started IS NULL', [user.id]))
+        serializer = BookSerializer(tbr, many=True)
+        return Response(serializer.data, status=status.HTTP_200_OK)
+
+
+class UserRead(APIView):
+    def get(self, request, username, format=None):
+        user = User.objects.get(username=username)
+        read = list(Book.objects.raw('SELECT * FROM books_book WHERE user_id_id IS %s AND date_finished IS NOT NULL', [user.id]))
+        serializer = BookSerializer(read, many=True)
+        return Response(serializer.data, status=status.HTTP_200_OK)
+
+
+class UserCurrent(APIView):
+       def get(self, request, username, format=None):
+        user = User.objects.get(username=username)
+        read = list(Book.objects.raw('SELECT * FROM books_book WHERE user_id_id IS %s AND date_started IS NOT NULL AND date_finished IS NULL', [user.id]))
+        serializer = BookSerializer(read, many=True)
+        return Response(serializer.data, status=status.HTTP_200_OK)
+
+
 class UserBooks(APIView):
     def get_object(self, username):
         try:
