@@ -9,6 +9,7 @@ import {
   Search,
   LibraryLanding,
   ToBeRead,
+  Error404,
 } from "./pages";
 import { BookContextProvider } from "./context/bookContext";
 
@@ -41,6 +42,7 @@ function App() {
           <Route path="/toberead">
             <ToBeRead />
           </Route>
+          <Error404 />
         </Switch>
       </div>
     </BookContextProvider>
