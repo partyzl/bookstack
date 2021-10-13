@@ -1,5 +1,4 @@
 // import React from "react";
-// import { useHistory } from "react-router";
 
 // const siteUrl = `http://localhost:3000`
 // const serverUrl = `http://localhost:8000`
@@ -48,3 +47,19 @@
 // }
 
 // export default  requestLogin
+
+const token = localStorage.getItem("token");
+
+function checkToken() {
+  console.log("checking token")
+	if (!token) {
+	    //redirect;
+        console.log('No token')
+        window.location.href = '/login'
+	}
+}
+
+const userId = localStorage.getItem("id");
+const authorization = { headers: { authorization: token } };
+
+export default checkToken
