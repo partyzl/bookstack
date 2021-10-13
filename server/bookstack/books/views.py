@@ -6,6 +6,7 @@ from .serializers import BookSerializer, BookStatsSerializer
 from django.contrib.auth.models import User
 
 
+
 # Create your views here.
 class Books(APIView):
     def get(self, request, format=None):
@@ -67,18 +68,17 @@ class UserBooksDetail(APIView):
         serializer = BookSerializer(book, data=request.data, partial=True)
         if serializer.is_valid():
             serializer.save()
-            book_stats_object = BookStats.objects.get(title=title)
-            current_stats = BookStatsSerializer(book_stats_object)
-            print(current_stats.data)
-            update_1 = self.update_count(current_stats.data)
-            print(update_1)
-            #update_2 = self.update_avg_rating(update_1)
-
-
-            book_stats_serializer = BookStatsSerializer(book_stats_object, data=update_1)
-            if book_stats_serializer.is_valid():
-
-                book_stats_serializer.save()
+            
+            if request.data["update"] == "finished_book":
+                book_stats_object = BookStats.objects.get(title=title)
+                current_stats = BookStatsSerializer(book_stats_object)
+                update_1 = self.update_count(current_stats.data)
+                update_2 = self.update_avg_rating(update_1)
+                book_stats_serializer = BookStatsSerializer(book_stats_object, data=update_2)
+                if book_stats_serializer.is_valid():
+                    book_stats_serializer.save()
+                    return Response({"book": serializer.data, "book_stats": book_stats_serializer.data})
+                return Response('could not update book stats', status=status.HTTP_400_BAD_REQUEST)
 
             return Response(serializer.data, status=status.HTTP_202_ACCEPTED)
         return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
@@ -88,12 +88,17 @@ class UserBooksDetail(APIView):
         book.delete()
         return Response(status=status.HTTP_204_NO_CONTENT)
 
-    # helper funcs
+
+
+
+#------------------------------HELPER FUNCTIONS-----------------------------#
 
     def update_count(self, book_stats):
         book_stats["book_count"] += 1
         return book_stats
 
     def update_avg_rating(self, book_stats):
-        book_stats["avg_rating"] = int(list(Book.objects.raw('SELECT AVG(ALL rating) FROM Book'))[0])
+        queryset = list(Book.objects.raw('SELECT id, AVG(ALL rating) FROM books_book'))[0]
+        avg_rating = int(queryset.__dict__["AVG(ALL rating)"])
+        book_stats["avg_rating"] = round(avg_rating)
         return book_stats
