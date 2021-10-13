@@ -1,7 +1,7 @@
-import React from "react";
+import {React, useEffect} from "react";
 import { useHistory } from "react-router";
 import { Button } from "../../components";
-import checkToken from "../../App"
+import {checkToken} from "../../actions/loginauth"
 
 const ProfileSetup = () => {
   let history = useHistory();
@@ -9,8 +9,8 @@ const ProfileSetup = () => {
   const search = () => {
     history.push("/search");
   };
-
-checkToken()
+  
+  checkToken()
 
   return (
     <div className="body">

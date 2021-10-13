@@ -1,6 +1,7 @@
 import React from "react";
 import { Nav, Button, SimpleSlider } from "../../components";
 import { useHistory } from "react-router";
+import { checkToken } from "../../actions/loginauth";
 import "./styles.css";
 
 const Profile = () => {
@@ -11,6 +12,7 @@ const Profile = () => {
       history.push("/profilesetup");
     };
 
+    checkToken()
     return (
         <div className="body">
             <Nav />

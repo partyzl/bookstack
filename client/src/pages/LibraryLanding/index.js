@@ -1,6 +1,7 @@
 import React from "react";
 import { useHistory } from "react-router";
 import { Button, Nav } from "../../components";
+import { checkToken } from "../../actions/loginauth";
 import "./styles.css";
 
 const LibraryLanding = () => {
@@ -15,6 +16,8 @@ const LibraryLanding = () => {
   const CompletedReads = () => {
     history.push("/completedreads");
   };
+
+  checkToken()
 
   return (
     <div className="body">
