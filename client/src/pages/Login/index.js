@@ -23,7 +23,6 @@ const Login = () => {
 
   async function requestLogin(e) {
     e.preventDefault();
-    console.log(e)
     try {
       const options = {
         method: "POST",
@@ -33,7 +32,6 @@ const Login = () => {
           password: e.target.form.password.value
         })
       };
-      console.log(options)
       const resp = await fetch(`${localServerUrl}/login/`, options);
       const data = await resp.json();
       console.log("data", data);
@@ -42,16 +40,16 @@ const Login = () => {
         throw new Error("Login not authorised");
       }
       console.log("Logging in")
-      // login(data.token);
+      login(data.token, e.target.form.username.value);
     } catch (err) {
       console.warn(err);
     }
   }
 
-  function login(token) {
-    const user = jwt_decode(token);
+  function login(token, username) {
+    //const user = jwt_decode(token);
     localStorage.setItem("token", token);
-    localStorage.setItem("username", user.username);
+    localStorage.setItem("username", username);
     // localStorage.setItem("email", user.email);
     // localStorage.setItem("id", user.id);
     profilelanding();
