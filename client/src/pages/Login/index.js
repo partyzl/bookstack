@@ -17,7 +17,8 @@ const Login = () => {
   };
 
   const siteUrl = `http://localhost:3000`
-  const serverUrl = `http://localhost:8000`
+  const deployedServerUrl = `https://bookstack-heroku-app.herokuapp.com`
+  const localServerUrl = 'http://localhost:8000'
 
 
   async function requestLogin(e) {
@@ -32,13 +33,12 @@ const Login = () => {
           password: e.target.form.password.value
         })
       };
-      const r = await fetch(
-        `${serverUrl}/login/`,
-        options
-      );
-      const data = await r.json();
+      console.log(options)
+      const resp = await fetch(`${localServerUrl}/login/`, options);
+      const data = await resp.json();
       console.log("data", data);
-      if (!data.success) {
+ 
+      if (resp.status == 400) {
         throw new Error("Login not authorised");
       }
       console.log("Logging in")
