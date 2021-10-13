@@ -10,6 +10,7 @@ const BookCard = ({ key, title, cover, author, genre, published }) => {
   const [error, setError] = useState("");
   let history = useHistory();
 
+
   // const addBook = () => {
   //   history.push("/currentread");
   // };
@@ -37,6 +38,9 @@ const BookCard = ({ key, title, cover, author, genre, published }) => {
       setError("Sorry, book could not be added to your to be read stack");
     }
   };
+
+
+
 
   return (
     <div className="col-12 col-md-6 col-lg-3 mb-3">
