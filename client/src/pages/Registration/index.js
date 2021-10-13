@@ -32,15 +32,12 @@ const Registration = () => {
 
   const makeAccount = async (email, username, password, confirmPassword) => {
     try {
-      const { data } = await axios.post(
-        `https://bookstack-heroku-app.herokuapp.com/register`,
-        {
-          username,
-          email,
-          password,
-          password_confirmation: confirmPassword,
-        }
-      );
+      const { data } = await axios.post(`http://localhost:8000/register/`, {
+        username,
+        email,
+        password,
+        password_confirmation: confirmPassword,
+      });
 
       if (data) {
         return data;
