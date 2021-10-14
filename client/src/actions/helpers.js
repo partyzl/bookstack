@@ -89,8 +89,4 @@ async function getProfile(){
     return data
 }
 
-<<<<<<< HEAD
 export {getStats, formatPublishYear, formateDateNow, getTBR, moveToCurrentBooks, movetoFinishedBooks}
-=======
-export {getStats, getProfile}
->>>>>>> connecting

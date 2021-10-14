@@ -14,6 +14,14 @@ const Registration = () => {
 
   let history = useHistory();
 
+  const getUserId = async (e) => {
+    const {data} = await axios.get(`https://bookstack-heroku-app.herokuapp.com/profiles/${username}/`)
+    if (!data.items.length) {
+      console.log("get failed");
+    }
+    else console.log(data);
+  }
+
   const registerSubmit = async (event) => {
     console.log(password, confirmPassword);
     event.preventDefault();
@@ -25,6 +33,7 @@ const Registration = () => {
         password,
         confirmPassword
       );
+      getUserId();
       if (newAccount) history.push("/profilesetup");
     } else if (confirmPassword != password) {
       setError("Check password values match");
