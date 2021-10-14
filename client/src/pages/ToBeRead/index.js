@@ -6,7 +6,7 @@ import { LibraryCard, Nav } from "../../components/";
 const ToBeRead = () => {
   checkToken()
   return (
-    <div>
+    <div className="body">
       <Nav />
       <div className="cardContainer">
         <LibraryCard />

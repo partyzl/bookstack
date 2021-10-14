@@ -1,13 +1,14 @@
 import React from "react";
-import { BookCard } from "../../components";
+import { Nav, CurrentReadCard } from "../../components";
 import { checkToken } from "../../actions/loginauth";
 
 const CurrentReads = () => {
   checkToken()
   return (
-    <div>
-      <p>testing</p>
-      <BookCard />
+    <div className="body">
+      <p>Current Reads</p>
+      <CurrentReadCard />
+      <Nav />
     </div>
   );
 };
