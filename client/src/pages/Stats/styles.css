@@ -1,0 +1,49 @@
+#bodycontainer{
+    display: flex;
+    flex-flow: column wrap;
+    align-items: center;
+    justify-content: center;
+}
+
+#spaceright{
+    margin-right: 1rem;
+}
+
+#pagetitle{
+    margin-bottom: 3vh;
+}
+
+
+
+.container{
+    display: flex;
+    flex-flow: row wrap;
+    justify-content: center;
+}
+
+.statfact{
+    background-color: rgba(255, 255, 255, 0.6);
+    margin: 2vw 5vw;
+    border-radius: 5px;
+    
+}
+
+.pair{
+    width: 35vw;
+}
+
+.solo{
+    width:80vw;
+}
+
+.descriptor{
+    font-weight: lighter;
+    font-size: large;
+}
+
+p{
+    margin: 2vw;
+}
+
+
+

@@ -1,19 +1,18 @@
-import {React, useEffect, useState} from "react";
+import { React, useEffect, useState } from "react";
 import { useHistory } from "react-router";
 import { Button, ProfileSlider } from "../../components";
 import checkToken from "../../App";
 import axios from "axios";
 
 const Profile = () => {
-
   const [avatar, setAvatar] = useState("");
   const [fav_book, setFav_book] = useState("");
   const [fav_character, setFav_character] = useState("");
   const [book_target, setBook_target] = useState("");
   const [error, setError] = useState("");
-  
+
   let history = useHistory();
-  
+
   const search = () => {
     history.push("/search");
   };
@@ -22,13 +21,14 @@ const Profile = () => {
 
   const makeProfile = async (avatar, fav_character, fav_book, book_target) => {
     const username = localStorage.getItem("username");
-    const user_id = localStorage.getItem("user_id");
+
     try {
       // `https://bookstack-heroku-app.herokuapp.com/register/`,
       // http://localhost:8000/register/
-      const { data } = await axios.post(`https://bookstack-heroku-app.herokuapp.com/profiles/`,
+      const { data } = await axios.post(
+        `https://bookstack-heroku-app.herokuapp.com/profiles/`,
         {
-          user_id,
+          user_id: 3,
           // avatar,
           fav_character,
           fav_book,
@@ -37,18 +37,14 @@ const Profile = () => {
       );
 
       if (data) {
-        console.log(data)
+        console.log(data);
         return data;
       } else {
-        setError(
-          "Sorry, profile setup failed, please check the form again"
-        );
+        setError("Sorry, profile setup failed, please check the form again");
       }
     } catch (err) {
       console.log(err);
-      setError(
-        "Sorry, profile could not be setup"
-      );
+      setError("Sorry, profile could not be setup");
     }
   };
 
@@ -60,13 +56,11 @@ const Profile = () => {
       fav_character,
       fav_book,
       book_target
-      );
-      if (newProfile) { history.push("/profilelanding");
-    } 
-    else 
-      setError("Please try again");
-    };
-
+    );
+    if (newProfile) {
+      history.push("/profilelanding");
+    } else setError("Please try again");
+  };
 
   return (
     <div className="body">
@@ -74,20 +68,29 @@ const Profile = () => {
       <ProfileSlider />
       <form onSubmit={profileSubmit}>
         {/* need to add profile picture to this via a new slider type component */}
-        <input type="text" placeholder="Enter character" name="fav-character" 
-        value={fav_character} 
-        onChange={(e) => {
-          setFav_character(e.target.value)
-        }} />
-  
+        <input
+          type="text"
+          placeholder="Enter character"
+          name="fav-character"
+          value={fav_character}
+          onChange={(e) => {
+            setFav_character(e.target.value);
+          }}
+        />
+
         <br />
-        <input type="text" placeholder="Enter book" name="fav-book" 
-        value={fav_book}
-        onChange={(e) => {
-          setFav_book(e.target.value)
-        }} />
+        <input
+          type="text"
+          placeholder="Enter book"
+          name="fav-book"
+          value={fav_book}
+          onChange={(e) => {
+            setFav_book(e.target.value);
+          }}
+        />
         <Button
           type="submit"
+          data-testid="submit-btn"
           className={"btn btn-light col-sm-2 mb-3"}
           // onClick={search}
         >
@@ -96,7 +99,7 @@ const Profile = () => {
       </form>
       {/* <Button
         type="button"
-        className={"fix btn btn-light col-sm-1 mb-3"}
+        className={"btn btn-light col-sm-1 mb-3"}
         onClick={search}
       >
         Skip

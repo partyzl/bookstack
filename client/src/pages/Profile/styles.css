@@ -4,3 +4,10 @@ h4 {
 .introduction {
   color: #ffcf57;
 }
+
+.profileBtnContainer {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-top: 1rem;
+}
