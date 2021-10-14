@@ -4,12 +4,13 @@ import { checkToken } from "../../actions/loginauth";
 import { getBooksList } from "../../actions/helpers";
 
 const CurrentReads = () => {
+
   checkToken()
-  const currentList = getBooksList("current")
-  console.log(currentList)
+  
   const [currentBookElements, setCurrentBookElements] = useState([])
 
-  useEffect(() => {
+  useEffect(async () => {
+    const currentList = await getBooksList("current")
     const current = currentList.map((book) => <CurrentReadCard />)
     setCurrentBookElements(current)
   }, [])

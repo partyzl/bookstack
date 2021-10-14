@@ -7,12 +7,12 @@ import { getBooksList } from "../../actions/helpers";
 const ToBeRead = () => {
 
   checkToken()
-  const tbrList = getBooksList("tbr")
-  console.log(tbrList)
+
   const [tbrElements, setTbrElements] = useState([])
 
-  useEffect(() => {
-    const tbr = tbrList.map((book) => <LibraryCard />)
+  useEffect(async () => {
+    const tbrList = await getBooksList("tbr")
+    const tbr = tbrList.map((book) => <LibraryCard key={book.id} title={book.title} cover={book.cover} author={book.author}/>)
     setTbrElements(tbr)
   }, [])
 
