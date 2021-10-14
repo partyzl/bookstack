@@ -2,3 +2,4 @@ __pycache__
 */.env
 Pipfile.lock
 Package-lock.json
+*/node_modules
