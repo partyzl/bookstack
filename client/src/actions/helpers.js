@@ -78,8 +78,19 @@ async function getStats(){
     const username = localStorage.getItem("username");
     const resp = await fetch(`${localServerUrl}/profiles/${username}/stats`)
     const data = await resp.json()
-
-    console.log(data)
+    return data
 }
 
+
+async function getProfile(){
+    const username = localStorage.getItem("username");
+    const resp = await fetch(`${localServerUrl}/profiles/${username}`)
+    const data = await resp.json()
+    return data
+}
+
+<<<<<<< HEAD
 export {getStats, formatPublishYear, formateDateNow, getTBR, moveToCurrentBooks, movetoFinishedBooks}
+=======
+export {getStats, getProfile}
+>>>>>>> connecting

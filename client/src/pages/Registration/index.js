@@ -3,7 +3,7 @@ import { useHistory } from "react-router";
 import axios from "axios";
 import { Button } from "../../components";
 import "../Login/styles.css";
-import requestRegistration from "../../actions/registerauth";
+import requestRegistration from "../../actions/registerauth"
 
 const Registration = () => {
   const [email, setEmail] = useState("");
@@ -33,17 +33,12 @@ const Registration = () => {
 
   const makeAccount = async (email, username, password, confirmPassword) => {
     try {
-      // `https://bookstack-heroku-app.herokuapp.com/register/`,
-      // http://localhost:8000/register/
-      const { data } = await axios.post(
-        `https://bookstack-heroku-app.herokuapp.com/register/`,
-        {
-          username,
-          email,
-          password,
-          password_confirmation: confirmPassword,
-        }
-      );
+      const { data } = await axios.post(`http://bookstack-heroku-app.herokuapp.com/register/`, {
+        username,
+        email,
+        password,
+        password_confirmation: confirmPassword,
+      });
 
       if (data) {
         return data;
@@ -106,6 +101,12 @@ const Registration = () => {
             setConfirmPassword(e.target.value);
           }}
         />
+        <Button
+          type="submit"
+          className={"btn btn-light col-sm-2 mb-3"}
+          // onClick={setup}
+          onClick={requestRegistration}
+        ></Button>
         {error && (
           <>
             <br />
