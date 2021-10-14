@@ -20,22 +20,21 @@ const Profile = () => {
 
   checkToken();
 
-  const makeProfile = async (avatar, fav_book, fav_character, book_target) => {
+  const makeProfile = async (avatar, fav_character, fav_book, book_target) => {
     const username = localStorage.getItem("username");
+    const user_id = localStorage.getItem("user_id");
     try {
       // `https://bookstack-heroku-app.herokuapp.com/register/`,
       // http://localhost:8000/register/
-      const { data } = await axios.post(
-
-        `https://bookstack-heroku-app.herokuapp.com/profiles/`,
+      const { data } = await axios.post(`https://bookstack-heroku-app.herokuapp.com/profiles/`,
         {
-          avatar,
-          fav_book,
+          user_id,
+          // avatar,
           fav_character,
-          book_target,
+          fav_book,
+          // book_target,
         }
       );
-      console.log(data);
 
       if (data) {
         console.log(data)
@@ -91,7 +90,6 @@ const Profile = () => {
           type="submit"
           className={"btn btn-light col-sm-2 mb-3"}
           // onClick={search}
-          // onClick={console.log({fav_book})}
         >
           Next
         </Button>
