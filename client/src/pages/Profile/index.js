@@ -6,7 +6,7 @@ import "./styles.css";
 
 const Profile = () => {
   let history = useHistory();
-
+  const username = localStorage.getItem("username");
   // will send user to account setup
   const setup = () => {
     history.push("/profilesetup");
@@ -16,7 +16,7 @@ const Profile = () => {
     <div className="body">
       <Nav />
 
-      {/* profile picture */}
+      {/* {profileimage} */}
       <img
         alt="profile picture"
         src={`https://avatars.dicebear.com/api/gridy/${
@@ -25,7 +25,7 @@ const Profile = () => {
       />
 
       {/* username */}
-      <h4>placeholder username</h4>
+      <h4 className="introduction">Hello, {username}, got any new reads?</h4>
 
       <h4>Favourite Character: </h4>
       {/* will be pulled from db */}
