@@ -62,14 +62,16 @@ const Profile = () => {
 
       <h4>Books currently being read: </h4>
       {/* <SimpleSlider /> */}
-
-      <Button
-        type="submit"
-        className={"fix btn btn-light col-sm-2 mb-3"}
-        onClick={setup}
-      >
-        Edit
-      </Button>
+      <div className="profileBtnContainer">
+        <Button
+          type="submit"
+          data-testid="submit-btn"
+          className={"fix btn btn-light col-sm-2 mb-3"}
+          onClick={setup}
+        >
+          Edit
+        </Button>
+      </div>
     </div>
   );
 };
