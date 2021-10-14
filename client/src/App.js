@@ -15,18 +15,17 @@ import {
 import { BookContextProvider } from "./context/bookContext";
 import { useHistory } from "react-router";
 
-
 const BASE_URL = "localhost:3000";
 const USER_URL = "localhost:3000/profile";
 
 const token = localStorage.getItem("token");
 
 function checkToken() {
-	if (!token) {
-		// history.push("/loginlanding");
-    console.log('No token')
-		return;
-	}
+  if (!token) {
+    // history.push("/loginlanding");
+    console.log("No token");
+    return;
+  }
 }
 
 const userId = localStorage.getItem("id");
@@ -71,4 +70,4 @@ function App() {
   );
 }
 
-export default App
+export default App;
