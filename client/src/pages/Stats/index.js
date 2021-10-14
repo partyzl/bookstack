@@ -5,6 +5,7 @@ import {getStats} from "../../actions/helpers"
 
 const StatsDisplay = () => {
   checkToken();
+  
   useEffect(getStats,[])
 
   return (

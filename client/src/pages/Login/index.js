@@ -29,7 +29,7 @@ const Login = () => {
           password: e.target.form.password.value
         })
       };
-      const resp = await fetch(`${localServerUrl}/login/`, options);
+      const resp = await fetch(`${deployedServerUrl}/login/`, options);
       const data = await resp.json();
       console.log("data", data);
  
