@@ -38,17 +38,20 @@ async function moveToCurrentBooks(bookId) {
 }
 
 
-async function movetoFinishedBooks(book_id) {
+async function movetoFinishedBooks(book_id, form) {
     const username = localStorage.getItem("username")
     const options = {
         method: "PUT",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({
-            date_finished: formateDateNow()
+            update:"finished",
+            date_finished: formateDateNow(),
+            // user_notes: form.notes,
+            // rating: form.rating
         })
     }
     try {
-        const resp = await fetch(`${deployedServerUrl}/profiles/${username}/books/${book_id}`, options)
+        const resp = await fetch(`${deployedServerUrl}/profiles/${username}/books/${book_id}/`, options)
         const data = resp.json()
         return data
     } catch (err) {
