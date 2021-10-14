@@ -13,6 +13,7 @@ const Books = () => {
           author={book.author}
           cover={book.image}
           genre={book.genre}
+          page_num={book.page_num}
           published={book.publish}
         />
       ))}

@@ -8,7 +8,12 @@ const localServerUrl = 'http://localhost:8000'
 
 
 
-
+function formatPublishYear(dateString){
+    "2020-10-15"
+    const dateAsArray = dateString.split('-')
+    const year = parseInt(dateAsArray[0]) 
+    return year
+}
 
 async function getStats(){
     const username = localStorage.getItem("username");
@@ -18,4 +23,4 @@ async function getStats(){
     console.log(data)
 }
 
-export {getStats}
+export {getStats, formatPublishYear}

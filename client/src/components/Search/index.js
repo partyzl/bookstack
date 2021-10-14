@@ -40,7 +40,9 @@ const Search = () => {
           genre: book?.volumeInfo?.categories
             ? book.volumeInfo.categories[0]
             : "",
+          page_num:book?.volumeInfo.pageCount,
           publish: book.volumeInfo.publishedDate,
+          genre: book?.volumeInfo.categories[0]
         };
       });
       console.log(array);

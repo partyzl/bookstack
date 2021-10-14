@@ -3,10 +3,11 @@ import { useHistory } from "react-router";
 import axios from "axios";
 import "./styles.css";
 import { Button } from "../index";
+import { formatPublishYear } from "../../actions/helpers";
 
 // import { CurrentReads } from "../../pages";
 
-const BookCard = ({ key, title, cover, author, genre, published }) => {
+const BookCard = ({ key, title, cover, author, genre, published, page_num}) => {
   const [error, setError] = useState("");
   let history = useHistory();
 
@@ -22,10 +23,12 @@ const BookCard = ({ key, title, cover, author, genre, published }) => {
         `https://bookstack-heroku-app.herokuapp.com/profiles/${username}/books/`,
         {
           user_id: 3,
+          cover: cover,
           title: title,
           author: author,
-          page_num: 1,
-          publish_year: 9999
+          page_num: 2,
+          genres: genre,
+          publish_year: formatPublishYear(published)
         }
       );
 
