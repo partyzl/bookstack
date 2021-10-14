@@ -7,18 +7,18 @@ from datetime import date
 
 # Create your models here.
 class Book(models.Model):
-    title = models.CharField(max_length=500)
+    title = models.CharField(max_length=255)
     user_id = models.ForeignKey(User, on_delete=models.SET_NULL, null=True)
-    author = models.CharField(max_length=500, default="")
-    cover = models.CharField(max_length=5000, default="")
+    author = models.CharField(max_length=255, default="")
+    cover = models.TextField(max_length=1000, default="")
     page_num = models.IntegerField()
-    genre = models.CharField(max_length=400)
+    genre = models.CharField(max_length=255)
     publish_year = models.IntegerField()
     rating = models.IntegerField(null=True)
     date_started = models.DateField(null=True)
     date_finished = models.DateField(null=True)
     private = models.BooleanField(default=False)
-    user_notes = models.CharField(max_length=5000, null=True, blank=True)
+    user_notes = models.TextField(max_length=5000, null=True, blank=True)
 
     def __str__(self):
         return f"{self.title} by {self.author}"
