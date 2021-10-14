@@ -6,7 +6,7 @@ function login(token, username) {
     //const user = jwt_decode(token);
     localStorage.setItem("token", token);
     localStorage.setItem("username", username);
-    window.location.href("")
+    window.location.href = "/profilelanding"
 }
 
 function checkToken() {
