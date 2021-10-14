@@ -44,7 +44,7 @@ class UserTBR(APIView):
         user = User.objects.get(username=username)
         tbr = list(
             Book.objects.raw(
-                "SELECT * FROM books_book WHERE user_id_id IS %s AND date_started IS NULL",
+                "SELECT * FROM books_book WHERE (user_id_id IS %s AND date_started IS NULL)",
                 [user.id],
             )
         )
