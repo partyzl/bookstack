@@ -16,18 +16,11 @@ const BookCardNoBtn = ({ key, title, cover, author, genre, published }) => {
   const addBook = async () => {
     try {
       const { data } = await axios.post(`http://localhost:8000/books/`, {
-        id: key,
-        user_id: 1,
-        title,
-        author,
-        cover,
+        user_id: 3,
+        title: title,
+        author: author,
         page_num: 1,
-        rating: 1,
-        publish_year: published,
-        date_started: 9999 / 9 / 9,
-        date_finished: 9998 / 9 / 8,
-        private: false,
-        user_notes: "",
+        publish_year: 9999,
       });
 
       if (data) {

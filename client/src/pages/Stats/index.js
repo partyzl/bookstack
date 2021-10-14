@@ -1,4 +1,4 @@
-import {React, useEffect, useState} from "react";
+import { React, useEffect, useState } from "react";
 import { checkToken } from "../../actions/loginauth";
 import {getStats} from "../../actions/helpers"
 import "./styles.css";
@@ -7,19 +7,17 @@ import { Nav } from "../../components";
 const StatsDisplay = () => {
   checkToken();
 
- const [stats, setStats] = useState(async () => await getStats())
+  const [stats, setStats] = useState(async () => await getStats());
 
- useEffect(async () => {
-  const statsData = await getStats() 
-  console.log(statsData) 
-  setStats(statsData)
- }, [])
-
-
-
+  useEffect(async () => {
+    const statsData = await getStats();
+    console.log(statsData);
+    setStats(statsData);
+  }, []);
 
   return (
     <div>
+    
       <Nav />
       <section id="bodycontainer">
         <p className="title overlay" id="pagetitle">
@@ -65,6 +63,7 @@ const StatsDisplay = () => {
           </div>
         </section>
       </section>
+
     </div>
     
   );
