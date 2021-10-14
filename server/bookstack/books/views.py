@@ -44,7 +44,7 @@ class UserTBR(APIView):
         user = User.objects.get(username=username)
         tbr = list(
             Book.objects.raw(
-                "SELECT * FROM books_book WHERE user_id_id = %s AND date_started = NULL",
+                "SELECT * FROM books_book WHERE user_id_id = %s AND date_started IS NULL",
                 [user.id],
             )
         )
@@ -59,7 +59,7 @@ class UserRead(APIView):
         user = User.objects.get(username=username)
         read = list(
             Book.objects.raw(
-                "SELECT * FROM books_book WHERE user_id_id = %s AND date_finished = NOT NULL",
+                "SELECT * FROM books_book WHERE user_id_id = %s AND date_finished IS NOT NULL",
                 [user.id],
             )
         )
@@ -74,7 +74,7 @@ class UserCurrent(APIView):
         user = User.objects.get(username=username)
         read = list(
             Book.objects.raw(
-                "SELECT * FROM books_book WHERE user_id_id = %s AND date_started = NOT NULL AND date_finished = NULL",
+                "SELECT * FROM books_book WHERE user_id_id = %s AND date_started IS NOT NULL AND date_finished IS NULL",
                 [user.id],
             )
         )
