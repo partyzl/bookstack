@@ -1,5 +1,5 @@
 export { default as Button } from "./Button";
-export { default as SimpleSlider } from "./SimpleSlider";
+export { default as ProfileSlider } from "./ProfileSlider";
 export { default as Search } from "./Search";
 export { default as Books } from "./Books";
 export { default as BookCard } from "./BookCard";

@@ -10,24 +10,26 @@ const BookCard = ({ key, title, cover, author, genre, published }) => {
   const [error, setError] = useState("");
   let history = useHistory();
 
-
   // const addBook = () => {
   //   history.push("/currentread");
   // };
-
+  // https://bookstack-heroku-app.herokuapp.com/books/
   const addBook = async () => {
     try {
-      const { data } = await axios.post(
-        `https://bookstack-heroku-app.herokuapp.com/books`,
-        {
-          key,
-          title,
-          cover,
-          author,
-          genre,
-          published,
-        }
-      );
+      const { data } = await axios.post(`http://localhost:8000/books/`, {
+        id: key,
+        user_id: 1,
+        title,
+        author,
+        cover,
+        page_num: 1,
+        rating: 1,
+        publish_year: published,
+        date_started: 9999 / 9 / 9,
+        date_finished: 9998 / 9 / 8,
+        private: false,
+        user_notes: "",
+      });
 
       if (data) {
         return data;
@@ -38,9 +40,6 @@ const BookCard = ({ key, title, cover, author, genre, published }) => {
       setError("Sorry, book could not be added to your to be read stack");
     }
   };
-
-
-
 
   return (
     <div className="col-12 col-md-6 col-lg-3 mb-3">

@@ -1,7 +1,5 @@
 // adding new user to API in registration
 
-function register(formData)
-
 
 
 const deployedServerUrl = `https://bookstack-heroku-app.herokuapp.com`
@@ -16,8 +14,7 @@ async function getStats(){
     const username = localStorage.getItem("username");
     const resp = await fetch(`${localServerUrl}/profiles/${username}/stats`)
     const data = await resp.json()
-
-    console.log(data)
     return data
 }
 
+export {getStats}

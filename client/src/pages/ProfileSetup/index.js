@@ -1,7 +1,7 @@
 import {React, useEffect} from "react";
 import { useHistory } from "react-router";
-import { Button } from "../../components";
-import {checkToken} from "../../actions/loginauth"
+import { Button, ProfileSlider } from "../../components";
+import checkToken from "../../App";
 
 const ProfileSetup = () => {
   let history = useHistory();
@@ -9,11 +9,12 @@ const ProfileSetup = () => {
   const search = () => {
     history.push("/search");
   };
-  
-  checkToken()
+
+  checkToken();
 
   return (
     <div className="body">
+      <ProfileSlider />
       <form>
         {/* need to add profile picture to this via a new slider type component */}
         <input type="text" placeholder="Enter character" name="fav-character" />

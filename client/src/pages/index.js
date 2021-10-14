@@ -9,3 +9,4 @@ export { default as ProfileSetup } from "./ProfileSetup";
 export { default as Registration } from "./Registration";
 export { default as Search } from "./Search";
 export { default as ToBeRead } from "./ToBeRead";
+export { default as StatsDisplay } from "./Stats";
