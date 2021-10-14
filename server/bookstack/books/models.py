@@ -10,7 +10,7 @@ class Book(models.Model):
     title = models.CharField(max_length=500)
     user_id = models.ForeignKey(User, on_delete=models.SET_NULL, null=True)
     author = models.CharField(max_length=50)
-    cover = models.CharField(max_length=5000)
+    cover = models.CharField(max_length=5000, null=True, blank=True)
     page_num = models.IntegerField()
     genre = models.CharField(max_length=100)
     publish_year = models.IntegerField()
