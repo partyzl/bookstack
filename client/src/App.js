@@ -11,12 +11,26 @@ import {
   ToBeRead,
   CurrentReads,
   Error404,
+  StatsDisplay,
 } from "./pages";
 import { BookContextProvider } from "./context/bookContext";
 import { useHistory } from "react-router";
 
 const BASE_URL = "localhost:3000";
 const USER_URL = "localhost:3000/profile";
+
+const token = localStorage.getItem("token");
+
+function checkToken() {
+  if (!token) {
+    // history.push("/loginlanding");
+    console.log("No token");
+    return;
+  }
+}
+
+const userId = localStorage.getItem("id");
+const authorization = { headers: { authorization: token } };
 
 function App() {
 
@@ -51,6 +65,9 @@ function App() {
           <Route path="/currentreads">
             <CurrentReads />
           </Route>
+          <Route path="/stats">
+            <StatsDisplay/>
+          </Route>
           <Error404 />
         </Switch>
       </div>
@@ -58,4 +75,4 @@ function App() {
   );
 }
 
-export default App
+export default App;
