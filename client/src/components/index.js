@@ -6,3 +6,4 @@ export { default as BookCard } from "./BookCard";
 export { default as DropDown } from "./Dropdown";
 export { default as Nav } from "./Nav";
 export { default as LibraryCard } from "./LibraryCard";
+export { default as CurrentReadCard } from "./CurrentReadCard"
