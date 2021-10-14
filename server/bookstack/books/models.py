@@ -9,7 +9,7 @@ from datetime import date
 class Book(models.Model):
     title = models.CharField(max_length=500)
     user_id = models.ForeignKey(User, on_delete=models.SET_NULL, null=True)
-    author = models.CharField(max_length=50)
+    author = models.CharField(max_length=500)
     cover = models.CharField(max_length=5000, default="")
     page_num = models.IntegerField()
     genre = models.CharField(max_length=500)
