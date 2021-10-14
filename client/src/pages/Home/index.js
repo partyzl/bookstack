@@ -18,7 +18,7 @@ const Home = () => {
 
   return (
     <div className="body">
-      <p className="title overlay">
+      <p className="title">
         <span className="color1">B</span>
         <span className="color2">o</span>
         <span className="color3">o</span>
