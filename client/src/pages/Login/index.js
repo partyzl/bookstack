@@ -31,13 +31,13 @@ const Login = () => {
       };
       const resp = await fetch(`${deployedServerUrl}/login/`, options);
       const data = await resp.json();
-      console.log("data", data);
  
       if (resp.status == 400) {
         throw new Error("Login not authorised");
       }
-      console.log("Logging in")
-      login(data.token, e.target.form.username.value);
+
+      
+      login(data.token, e.target.form.username.value );
     } catch (err) {
       console.warn(err);
     }
@@ -66,7 +66,7 @@ const Login = () => {
       </form>
       <Button
         type="button"
-        className={"btn btn-light col-sm-2 mb-3"}
+        className={"fix btn btn-light col-sm-2 mb-3"}
         onClick={register}
       >
         Register

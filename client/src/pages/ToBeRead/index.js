@@ -4,15 +4,21 @@ import { checkToken } from "../../actions/loginauth";
 import { LibraryCard, Nav } from "../../components/";
 
 const ToBeRead = () => {
+
   checkToken()
+
+
+
   return (
-    <div>
+    <div className="body">
       <Nav />
       <div className="cardContainer">
-        <LibraryCard />
+        {/* <LibraryCard title= cover= author=/> */}
       </div>
     </div>
   );
 };
 
 export default ToBeRead;
+
+

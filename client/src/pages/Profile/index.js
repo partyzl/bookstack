@@ -49,7 +49,7 @@ const Profile = () => {
 
       <Button
         type="submit"
-        className={"btn btn-light col-sm-2 mb-3"}
+        className={"fix btn btn-light col-sm-2 mb-3"}
         onClick={setup}
       >
         Edit

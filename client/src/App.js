@@ -12,9 +12,11 @@ import {
   CurrentReads,
   Error404,
   StatsDisplay,
+  Review
 } from "./pages";
 import { BookContextProvider } from "./context/bookContext";
 import { useHistory } from "react-router";
+import CompletedReads from "./pages/CompletedReads";
 
 const BASE_URL = "localhost:3000";
 const USER_URL = "localhost:3000/profile";
@@ -64,6 +66,12 @@ function App() {
           </Route>
           <Route path="/currentreads">
             <CurrentReads />
+          </Route>
+          <Route path="/review">
+            <Review/>
+          </Route>
+          <Route path="/completedreads">
+            <CompletedReads/>
           </Route>
           <Route path="/stats">
             <StatsDisplay/>

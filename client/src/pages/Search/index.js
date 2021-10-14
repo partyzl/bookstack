@@ -1,13 +1,14 @@
 import React from "react";
 import { checkToken } from "../../actions/loginauth";
-import { Search } from "../../components";
+import { Search, Nav } from "../../components";
 
 const SearchResults = () => {
   checkToken()
 
   return (
-    <div>
+    <div className="body">
       <Search />
+      <Nav />
     </div>
   );
 };

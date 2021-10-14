@@ -24,21 +24,21 @@ const LibraryLanding = () => {
       <Nav />
       <Button
         type="button"
-        className={"btn btn-light col-sm-2 mb-3"}
+        className={"fix btn btn-light col-sm-2 mb-3"}
         onClick={ToBeRead}
       >
         To Be Read
       </Button>
       <Button
         type="button"
-        className={"btn btn-light col-sm-2 mb-3"}
+        className={"fix btn btn-light col-sm-2 mb-3"}
         onClick={CurrentReads}
       >
         Current Reads
       </Button>
       <Button
         type="button"
-        className={"btn btn-light col-sm-2 mb-3"}
+        className={"fix btn btn-light col-sm-2 mb-3"}
         onClick={CompletedReads}
       >
         Completed Reads

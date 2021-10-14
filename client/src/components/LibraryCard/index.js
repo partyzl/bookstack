@@ -1,7 +1,10 @@
 import { React } from "react";
 import { useHistory } from "react-router";
+import { moveToCurrentBooks } from "../../actions/helpers";
 
 const LibraryCard = ({ key, title, cover, author }) => {
+
+
   return (
     <div className="col-12 col-md-6 col-lg-3 mb-3">
       <div className="card " id={key}>
@@ -13,9 +16,10 @@ const LibraryCard = ({ key, title, cover, author }) => {
           <div class="form-check">
             <input
               class="form-check-input"
-              type="radio"
+              type="button"
               name="flexRadioDefault"
               id="flexRadioDefault1"
+              onClick={() => moveToCurrentBooks()}
             />
             <label class="form-check-label" for="flexRadioDefault1">
               Currently Reading
