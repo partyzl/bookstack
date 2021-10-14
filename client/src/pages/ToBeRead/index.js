@@ -12,7 +12,10 @@ const ToBeRead = () => {
 
   useEffect(async () => {
     const tbrList = await getBooksList("tbr")
-    const tbr = tbrList.map((book) => <LibraryCard key={book.id} title={book.title} cover={book.cover} author={book.author}/>)
+    const tbr = tbrList.map((book) => {
+    return <LibraryCard book_id={book.id} title={book.title} cover={book.cover} author={book.author}/>
+    
+  })
     setTbrElements(tbr)
   }, [])
 
