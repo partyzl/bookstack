@@ -1,5 +1,5 @@
 import React from "react";
-import { Nav, Rating, BookCard, CurrentReadCard, Button } from "../../components";
+import { Nav, Rating, BookCardNoBtn, CurrentReadCard, Button } from "../../components";
 import { useHistory } from "react-router";
 import { checkToken } from "../../actions/loginauth";
 
@@ -12,9 +12,9 @@ const Review = () => {
     // https://bookstack-heroku-app.herokuapp.com/books/
   checkToken()
   return (
-    <div>
+    <div className="body">
       <p>Add your review!</p>
-      <BookCard />
+      <BookCardNoBtn />
       <form>
         <label>
             Review: 
@@ -22,11 +22,11 @@ const Review = () => {
         </label>
         <Rating />
         
-        <div>
-          <Button type="button" className={"btn btn-primary"} onClick={addReview}>
-            <i className="bi bi-plus-circle"></i> Complete review
-          </Button>
-        </div>
+            <div>
+            <Button type="button" className={"btn btn-primary"} onClick={addReview}>
+                <i className="bi bi-plus-circle"></i> Complete review
+            </Button>
+            </div>
         </form>
       <Nav />
     </div>
