@@ -38,13 +38,10 @@ class Stats(APIView):
 
 #------------------------------HELPER FUNCTIONS-----------------------------#
     def update_user_stats(self, user_id):
-            print(user_id)
             finished_books = list(Book.objects.raw('SELECT * FROM books_book WHERE date_finished IS NOT NULL AND user_id_id IS %s',[user_id]))#insert query for books that have a not null finished date.
             finished_total = len(finished_books)
             [reading_time, pages_read] = self.get_reading_data(finished_books)
-            print(reading_time)
             avg_book_length = round(pages_read / finished_total)
-            print(avg_book_length)
             pages_per_day = round(pages_read / reading_time, 1) 
             avg_book_time = round(reading_time / finished_total)
 
