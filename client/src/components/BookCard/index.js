@@ -17,7 +17,7 @@ const BookCard = ({ key, title, cover, author, genre, published, page_num}) => {
   // https://bookstack-heroku-app.herokuapp.com/books/
   const addBook = async () => {
     const username = localStorage.getItem("username");
-    console.log(username);
+    const user_id = localStorage.getItem("user_id")
     try {
       const { data } = await axios.post(
         `https://bookstack-heroku-app.herokuapp.com/profiles/${username}/books/`,
