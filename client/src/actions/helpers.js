@@ -78,9 +78,10 @@ async function getStats(){
 
 async function getProfile(){
     const username = localStorage.getItem("username");
-    const resp = await fetch(`${localServerUrl}/profiles/${username}`)
+    const resp = await fetch(`${deployedServerUrl}/profiles/${username}/`)
     const data = await resp.json()
     return data
 }
 
-export {getStats, formatPublishYear, formateDateNow, getBooksList, moveToCurrentBooks, movetoFinishedBooks}
+
+export {getStats, getProfile, getTBR formatPublishYear, formateDateNow, getBooksList, moveToCurrentBooks, movetoFinishedBooks}

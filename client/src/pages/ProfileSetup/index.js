@@ -21,14 +21,14 @@ const Profile = () => {
 
   const makeProfile = async (avatar, fav_character, fav_book, book_target) => {
     const username = localStorage.getItem("username");
-    const user_id = localStorage.getItem("user_id");
+
     try {
       // `https://bookstack-heroku-app.herokuapp.com/register/`,
       // http://localhost:8000/register/
       const { data } = await axios.post(
         `https://bookstack-heroku-app.herokuapp.com/profiles/`,
         {
-          user_id,
+          user_id: 3,
           // avatar,
           fav_character,
           fav_book,
@@ -99,7 +99,7 @@ const Profile = () => {
       </form>
       {/* <Button
         type="button"
-        className={"fix btn btn-light col-sm-1 mb-3"}
+        className={"btn btn-light col-sm-1 mb-3"}
         onClick={search}
       >
         Skip
