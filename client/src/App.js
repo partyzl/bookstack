@@ -19,6 +19,19 @@ import { useHistory } from "react-router";
 const BASE_URL = "localhost:3000";
 const USER_URL = "localhost:3000/profile";
 
+const token = localStorage.getItem("token");
+
+function checkToken() {
+  if (!token) {
+    // history.push("/loginlanding");
+    console.log("No token");
+    return;
+  }
+}
+
+const userId = localStorage.getItem("id");
+const authorization = { headers: { authorization: token } };
+
 function App() {
 
   return (
@@ -62,4 +75,4 @@ function App() {
   );
 }
 
-export default App
+export default App;
