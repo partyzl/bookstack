@@ -10,3 +10,4 @@ export { default as Registration } from "./Registration";
 export { default as Search } from "./Search";
 export { default as ToBeRead } from "./ToBeRead";
 export { default as StatsDisplay } from "./Stats";
+export { default as Review } from "./Review";

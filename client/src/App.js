@@ -12,6 +12,7 @@ import {
   CurrentReads,
   Error404,
   StatsDisplay,
+  Review
 } from "./pages";
 import { BookContextProvider } from "./context/bookContext";
 import { useHistory } from "react-router";
@@ -64,6 +65,9 @@ function App() {
           </Route>
           <Route path="/currentreads">
             <CurrentReads />
+          </Route>
+          <Route path="/review">
+            <Review/>
           </Route>
           <Route path="/stats">
             <StatsDisplay/>
