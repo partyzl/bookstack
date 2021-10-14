@@ -16,11 +16,11 @@ const CompletedReads = () => {
       <p>Completed books</p>
       <BookCardNoBtn />
       <form>
+{/* want to render in the current review and the current rating here from db */}
         <label>
             Review: 
         <input type="text" name="review" maxLength="280" disabled/>
         </label>
-        <Rating disabled/>
         
             <div>
             <Button type="button" className={"btn btn-primary"} onClick={editReview}>
