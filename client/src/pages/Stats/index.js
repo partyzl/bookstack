@@ -8,7 +8,7 @@ const StatsDisplay = () => {
   useEffect(getStats,[])
 
   return (
-    <div>
+    <div className="body">
       
     </div>
   );
