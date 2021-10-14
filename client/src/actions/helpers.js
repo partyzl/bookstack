@@ -1,7 +1,5 @@
 // adding new user to API in registration
 
-function register(formData)
-
 
 
 const deployedServerUrl = `https://bookstack-heroku-app.herokuapp.com`
