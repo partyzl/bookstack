@@ -39,7 +39,7 @@ class Stats(APIView):
         print(user_id)
         finished_books = list(
             Book.objects.raw(
-                "SELECT * FROM books_book WHERE date_finished IS NOT NULL AND user_id_id IS %s",
+                "SELECT * FROM books_book WHERE (date_finished IS NOT NULL AND user_id_id IS %s)",
                 [user_id],
             )
         )  # insert query for books that have a not null finished date.
