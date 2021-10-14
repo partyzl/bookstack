@@ -11,10 +11,9 @@ const CurrentReads = () => {
 
   useEffect(async () => {
     const currentList = await getBooksList("current")
-    const current = currentList.map((book) => <CurrentReadCard />)
+    const current = currentList.map((book) => <CurrentReadCard key={book.id} title={book.title} cover={book.cover} author={book.author}/>)
     setCurrentBookElements(current)
   }, [])
-  getBooksList("current")
 
   return (
     <div className="body">
