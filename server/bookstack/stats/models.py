@@ -9,9 +9,8 @@ class UserStats(models.Model):
     avg_book_time = models.IntegerField(null=True)
     avg_book_length = models.IntegerField(null=True)
     total_books_read = models.IntegerField(null=True)
-    genres = models.JSONField(null=True)
+    genres = models.CharField(max_length=100, null=True)
     fav_era = models.IntegerField(null=True)
 
     def __str__(self):
-        user = User.objects.get(id=self.user_id)
-        return f"{user.username} stats"
+        return f"{self.user_id} stats"
