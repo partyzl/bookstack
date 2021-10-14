@@ -15,21 +15,19 @@ const BookCard = ({ key, title, cover, author, genre, published }) => {
   // };
   // https://bookstack-heroku-app.herokuapp.com/books/
   const addBook = async () => {
+    const username = localStorage.getItem("username");
+    console.log(username);
     try {
-      const { data } = await axios.post(`http://localhost:8000/books/`, {
-        id: key,
-        user_id: 1,
-        title,
-        author,
-        cover,
-        page_num: 1,
-        rating: 1,
-        publish_year: published,
-        date_started: 9999 / 9 / 9,
-        date_finished: 9998 / 9 / 8,
-        private: false,
-        user_notes: "",
-      });
+      const { data } = await axios.post(
+        `https://bookstack-heroku-app.herokuapp.com/profiles/${username}/books/`,
+        {
+          user_id: 4,
+          title: "",
+          author: "",
+          page_num: 1,
+          publish_year: 9999
+        }
+      );
 
       if (data) {
         return data;
