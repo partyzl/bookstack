@@ -20,3 +20,4 @@ async function getStats(){
     console.log(data)
 }
 
+export {getStats}
