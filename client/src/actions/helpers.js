@@ -76,7 +76,7 @@ function formatPublishYear(dateString){
 
 async function getStats(){
     const username = localStorage.getItem("username");
-    const resp = await fetch(`${localServerUrl}/profiles/${username}/stats`)
+    const resp = await fetch(`${deployedServerUrl}/profiles/${username}/stats`)
     const data = await resp.json()
     return data
 }
@@ -84,9 +84,9 @@ async function getStats(){
 
 async function getProfile(){
     const username = localStorage.getItem("username");
-    const resp = await fetch(`${localServerUrl}/profiles/${username}`)
+    const resp = await fetch(`${deployedServerUrl}/profiles/${username}/`)
     const data = await resp.json()
     return data
 }
 
-export {getStats, formatPublishYear, formateDateNow, getTBR, moveToCurrentBooks, movetoFinishedBooks}
+export {getStats, getProfile, formatPublishYear, formateDateNow, getTBR, moveToCurrentBooks, movetoFinishedBooks}
