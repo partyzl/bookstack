@@ -25,7 +25,7 @@ const BookCard = ({ key, title, cover, author, genre, published }) => {
           title: title,
           author: author,
           page_num: 1,
-          publish_year: 9999
+          publish_year: 9999,
         }
       );
 
@@ -51,7 +51,7 @@ const BookCard = ({ key, title, cover, author, genre, published }) => {
         </div>
         <div>
           <Button type="button" className={"btn btn-primary"} onClick={addBook}>
-            <i className="bi bi-plus-circle"></i> Add to bookshelf
+            <i className="bi bi-plus-circle"></i>
           </Button>
         </div>
       </div>
