@@ -39,10 +39,9 @@ const Search = () => {
           author: book?.volumeInfo?.authors ? book.volumeInfo.authors[0] : "",
           genre: book?.volumeInfo?.categories
             ? book.volumeInfo.categories[0]
-            : "",
-          page_num:book?.volumeInfo.pageCount,
+            : "", 
           publish: book.volumeInfo.publishedDate,
-          genre: book?.volumeInfo.categories[0]
+          page_num:book?.volumeInfo.pageCount,
         };
       });
       console.log(array);

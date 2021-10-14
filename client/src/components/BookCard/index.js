@@ -26,7 +26,7 @@ const BookCard = ({ key, title, cover, author, genre, published, page_num}) => {
           cover: cover,
           title: title,
           author: author,
-          page_num: 2,
+          page_num: 352,
           genres: genre,
           publish_year: formatPublishYear(published)
         }

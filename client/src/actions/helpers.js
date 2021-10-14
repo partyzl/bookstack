@@ -82,4 +82,4 @@ async function getStats(){
     console.log(data)
 }
 
-export {getStats, formatPublishYear, formateDateNow, moveToCurrentBooks, movetoFinishedBooks}
+export {getStats, formatPublishYear, formateDateNow, getTBR, moveToCurrentBooks, movetoFinishedBooks}
