@@ -1,25 +1,20 @@
-// adding new user to API in registration
-
-
-
 const deployedServerUrl = `https://bookstack-heroku-app.herokuapp.com`
 const localServerUrl = 'http://localhost:8000'
 
-async function getTBR(){
+async function getBooksList(list_name){
     try{
         const username = localStorage.getItem("username")
         const token = localStorage.getItem("token")
         const options = {
             headers: {"Authorization": `Token ${token}`}
         }
-        const resp = await fetch(`${localServerUrl}/profiles/${username}/books/tbr`, options)
+        const resp = await fetch(`${deployedServerUrl}/profiles/${username}/books/${list_name}`, options)
         const data = resp.json()
         return data
     }catch(err){
         throw new Error('cannot fetch your tbr list', err)
     }
 }
-
 
 async function moveToCurrentBooks(book_id){
     const username = localStorage.getItem("username")
@@ -32,7 +27,7 @@ async function moveToCurrentBooks(book_id){
         })
     }
     try{
-        const resp = await fetch(`${localServerUrl}/profiles/${username}/books/${book_id}`, options)
+        const resp = await fetch(`${deployedServerUrl}/profiles/${username}/books/${book_id}`, options)
         const data = resp.json()
         return data
     } catch(err){
@@ -51,7 +46,7 @@ async function movetoFinishedBooks(book_id){
         })
     }
     try{
-        const resp = await fetch(`${localServerUrl}/profiles/${username}/books/${book_id}`, options)
+        const resp = await fetch(`${deployedServerUrl}/profiles/${username}/books/${book_id}`, options)
         const data = resp.json()
         return data
     } catch(err){
@@ -76,11 +71,10 @@ function formatPublishYear(dateString){
 
 async function getStats(){
     const username = localStorage.getItem("username");
-    const resp = await fetch(`${localServerUrl}/profiles/${username}/stats`)
+    const resp = await fetch(`${deployedServerUrl}/profiles/${username}/stats`)
     const data = await resp.json()
     return data
 }
-
 
 async function getProfile(){
     const username = localStorage.getItem("username");
@@ -89,8 +83,4 @@ async function getProfile(){
     return data
 }
 
-<<<<<<< HEAD
-export {getStats, formatPublishYear, formateDateNow, getTBR, moveToCurrentBooks, movetoFinishedBooks}
-=======
-export {getStats, getProfile}
->>>>>>> connecting
+export {getStats, formatPublishYear, formateDateNow, getBooksList, moveToCurrentBooks, movetoFinishedBooks}

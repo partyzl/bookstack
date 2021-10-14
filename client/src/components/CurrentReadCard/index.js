@@ -2,10 +2,11 @@ import { React } from "react";
 import { Button } from "../index";
 import { useHistory } from "react-router";
 
+
 const CurrentReadCard = ({ key, title, cover, author }) => {
     let history = useHistory();
 
-    const addBook = () => {
+    const addReview = () => {
       history.push("/review");
     };
     // https://bookstack-heroku-app.herokuapp.com/books/
@@ -19,7 +20,7 @@ const CurrentReadCard = ({ key, title, cover, author }) => {
           <p className="details">{author}</p>
 
           <div>
-          <Button type="button" className={"btn btn-primary"} onClick={addBook}>
+          <Button type="button" className={"btn btn-primary"} onClick={addReview}>
             <i className="bi bi-plus-circle"></i> Add a review
           </Button>
         </div>
