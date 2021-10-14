@@ -87,4 +87,4 @@ async function getProfile() {
     return data
 }
 
-export { getStats, formatPublishYear, formateDateNow, getBooksList, moveToCurrentBooks, movetoFinishedBooks }
+export { getStats, formatPublishYear, formateDateNow, getBooksList, moveToCurrentBooks, movetoFinishedBooks, getProfile }

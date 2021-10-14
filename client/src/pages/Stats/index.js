@@ -64,18 +64,6 @@ const StatsDisplay = () => {
         </section>
       </section>
 
-<<<<<<< HEAD
-  return (
-    <div>
-      <h1>my stats</h1>
-      <div>Pages / day: {stats.pages_per_day} days</div>
-      <div>Average time spent on a book: {stats.avg_book_time} days</div>
-      <div>Average book length: {stats.avg_book_length} pages</div>
-      <div>Top Genre: {stats.genres}</div>
-      <div>Total Books Read: {stats.total_books_read}</div>
-      <div>Favourite Era: {stats.fav_era}s</div>
-=======
->>>>>>> 31fb209469f85ad82bcf3d772edcf7728087e2a4
     </div>
     
   );

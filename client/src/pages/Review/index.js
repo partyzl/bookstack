@@ -11,7 +11,6 @@ import { checkToken } from "../../actions/loginauth";
 import { movetoFinishedBooks } from "../../actions/helpers";
 
 const Review = () => {
-<<<<<<< HEAD
   let history = useHistory();
 
   const addReview = async (e) => {
@@ -26,39 +25,6 @@ const Review = () => {
   
   checkToken()
 
-=======
-  const deployedServerUrl = `https://bookstack-heroku-app.herokuapp.com`;
-  const localServerUrl = "http://localhost:8000";
-  const addReview = async (e) => {
-    console.log(e);
-    try {
-      const token = localStorage.getItem("token");
-      const username = localStorage.getItem("username");
-
-      const options = {
-        method: "PUT",
-        headers: {
-          "Content-Type": "application/json",
-          Authorization: `Token ${token}`,
-        },
-        body: JSON.stringify({
-          user_notes: "This was a good book 10/10",
-          rating: 4,
-        }),
-      };
-
-      const resp = await fetch();
-      // `${deployedServerUrl}/profiles/${username}/books/${bookid}`,
-      // options
-      const data = await resp.json();
-      console.log("data", data);
-    } catch (err) {
-      console.warn(err);
-    }
-  };
-
-  checkToken();
->>>>>>> client
   return (
     <div className="body">
       <p>Add your review!</p>
@@ -70,16 +36,7 @@ const Review = () => {
         <Rating />
 
         <div>
-<<<<<<< HEAD
-          <Button type="button" className={"btn btn-primary"} onClick={addReview}>
-=======
-          <Button
-            type="button"
-            className={"btn btn-primary"}
-            onClick={addReview}
-            data-testid="submit-btn"
-          >
->>>>>>> client
+          <Button type="button" className={"btn btn-primary"} onClick={addReview} data-testid="submit-btn">
             <i className="bi bi-plus-circle"></i> Complete review
           </Button>
         </div>
