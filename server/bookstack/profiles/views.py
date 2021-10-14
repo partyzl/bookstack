@@ -14,18 +14,22 @@ from rest_framework.permissions import IsAuthenticated
 
 class CreateProfile(APIView):
     Permission_classes = [IsAuthenticated]
-    
+
     def post(self, request, format=None):
 
         prof_serializer = ProfileSerializer(data=request.data)
         stats_serializer = UserStatsSerializer(data=request.data)
         if prof_serializer.is_valid():
             prof_serializer.save()
-        if stats_serializer.is_valid():
-            stats_serializer.save()
-            return Response(
-                {"profile": prof_serializer.data,"profile_stats":stats_serializer.data}, status=status.HTTP_201_CREATED
-            )
+            if stats_serializer.is_valid():
+                stats_serializer.save()
+                return Response(
+                    {
+                        "profile": prof_serializer.data,
+                        "profile_stats": stats_serializer.data,
+                    },
+                    status=status.HTTP_201_CREATED,
+                )
         return Response(
             prof_serializer.errors, status=status.HTTP_400_BAD_REQUEST
         )
