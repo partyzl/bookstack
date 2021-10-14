@@ -19,6 +19,10 @@ const Profile = () => {
     history.push("/profilesetup");
   };
 
+  const gotToStats = () => {
+    history.push("/stats");
+  }
+
   //  const [profile, setProfile] = useState(async () => await getProfile())
 
   //  useEffect(async () => {
@@ -72,6 +76,15 @@ const Profile = () => {
           Edit
         </Button>
       </div>
+
+      <div className="profileBtnContainer">
+      <Button
+          type="submit"
+          className={"btn btn-light col-sm-2 mb-3"}
+          // onClick={setup}
+          onClick={gotToStats}
+        >View Stats</Button>
+        </div>
     </div>
   );
 };
