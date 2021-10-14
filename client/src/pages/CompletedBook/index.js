@@ -2,9 +2,11 @@ import React from "react";
 import { BookCard } from "../../components";
 import DropDown from "../../components/Dropdown";
 import { Books } from "../../components";
+import { checkToken } from "../../actions/loginauth";
 
 
 const CompletedBook = () => {
+  checkToken()
   return (
     <div>
         <form>

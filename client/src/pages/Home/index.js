@@ -1,6 +1,7 @@
 import React from "react";
 import { useHistory } from "react-router";
 import { Button } from "../../components";
+import { checkToken } from "../../actions/loginauth";
 import "./styles.css";
 
 const Home = () => {
@@ -12,6 +13,8 @@ const Home = () => {
   const Register = () => {
     history.push("/register");
   };
+
+  checkToken()
 
   return (
     <div className="body">

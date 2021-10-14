@@ -4,25 +4,22 @@ import { Button } from "../../components";
 // import { Header } from "../../../layout";
 import "./styles.css";
 import jwt_decode from 'jwt-decode';
+import { login } from "../../actions/loginauth";
 
 const Login = () => {
   let history = useHistory();
-
-  const profilelanding = () => {
-    history.push("/profilelanding");
-  };
 
   const register = () => {
     history.push("/register");
   };
 
   const siteUrl = `http://localhost:3000`
-  const serverUrl = `http://localhost:8000`
+  const deployedServerUrl = `https://bookstack-heroku-app.herokuapp.com`
+  const localServerUrl = 'http://localhost:8000'
 
 
   async function requestLogin(e) {
     e.preventDefault();
-    console.log(e)
     try {
       const options = {
         method: "POST",
@@ -32,29 +29,18 @@ const Login = () => {
           password: e.target.form.password.value
         })
       };
-      const r = await fetch(
-        `${serverUrl}/login/`,
-        options
-      );
-      const data = await r.json();
+      const resp = await fetch(`${localServerUrl}/login/`, options);
+      const data = await resp.json();
       console.log("data", data);
-      if (!data.success) {
+ 
+      if (resp.status == 400) {
         throw new Error("Login not authorised");
       }
       console.log("Logging in")
-      // login(data.token);
+      login(data.token, e.target.form.username.value);
     } catch (err) {
       console.warn(err);
     }
-  }
-
-  function login(token) {
-    const user = jwt_decode(token);
-    localStorage.setItem("token", token);
-    localStorage.setItem("username", user.username);
-    // localStorage.setItem("email", user.email);
-    // localStorage.setItem("id", user.id);
-    profilelanding();
   }
   // will make this consider auth when we link to backend
   // something along the lines of

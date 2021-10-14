@@ -1,6 +1,7 @@
 import React from "react";
 import { Nav, Button, ProfileSlider } from "../../components";
 import { useHistory } from "react-router";
+import { checkToken } from "../../actions/loginauth";
 import "./styles.css";
 
 const Profile = () => {
