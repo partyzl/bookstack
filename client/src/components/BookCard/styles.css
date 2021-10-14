@@ -45,4 +45,10 @@ img {
 .btn-light {
   background-color: rgb(255, 244, 189);
   font-size: 5vh;
+  display: flex;
+  
+}
+
+.details {
+  font-size: 15px;
 }

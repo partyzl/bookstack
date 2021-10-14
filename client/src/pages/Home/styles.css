@@ -1,10 +1,6 @@
 @import url("https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@600&display=swap");
 
-.overlay {
-  color: rgb(245, 245, 245, 0color4);
-}
-
-.title {
+.title > span {
   font-family: "Barlow Condensed", sans-serif;
   font-size: 10vh;
 }
@@ -22,7 +18,6 @@
   color: rgb(215, 196, 244);
 }
 
-(215,196,244)
 .buttonContainer {
   display: flex;
   flex-direction: column;
@@ -30,16 +25,12 @@
   margin-top: 13vh;
 }
 
-/* .button {
+.button {
   font-size: 5vh;
   background-color: (255, 244, 189, 0.4);
 }
-.button:hover {
-  background-color: (255, 244, 189);
-  transition-duration: 4s;
-} */
 
-@media (min-width: 600px) {
+/* @media (min-width: 600px) {
   .buttonContainer {
     display: flex;
     flex-direction: column;
@@ -50,4 +41,4 @@
   h4.nav-text {
     display: contents;
   }
-}
+} */
