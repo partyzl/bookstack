@@ -12,13 +12,20 @@ import "./styles.css";
 
 export default function SimpleSlider() {
   const settings = {
+    // infinite: true,
+    // speed: 500,
+    // slidesToShow: 1,
+    // slidesToScroll: 1,
+    // accessibility: true,
+    // autoplay: true,
+    // arrows: true,
+    // centerMode: true,
+    className: "center",
+    centerMode: true,
     infinite: true,
+    centerPadding: "10px",
+    slidesToShow: 3,
     speed: 500,
-    slidesToShow: 1,
-    slidesToScroll: 1,
-    accessibility: true,
-    autoplay: true,
-    arrows: true,
   };
   return (
     <div className="slider">
