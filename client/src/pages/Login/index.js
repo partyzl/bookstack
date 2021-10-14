@@ -66,7 +66,7 @@ const Login = () => {
       </form>
       <Button
         type="button"
-        className={"btn btn-light col-sm-2 mb-3"}
+        className={"fix btn btn-light col-sm-2 mb-3"}
         onClick={register}
       >
         Register

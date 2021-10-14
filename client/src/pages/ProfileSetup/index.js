@@ -30,7 +30,7 @@ const ProfileSetup = () => {
       </form>
       <Button
         type="button"
-        className={"btn btn-light col-sm-1 mb-3"}
+        className={"fix btn btn-light col-sm-1 mb-3"}
         onClick={search}
       >
         Skip
