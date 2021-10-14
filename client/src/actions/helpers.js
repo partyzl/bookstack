@@ -18,5 +18,6 @@ async function getStats(){
     const data = await resp.json()
 
     console.log(data)
+    return data
 }
 
