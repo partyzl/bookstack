@@ -5,12 +5,21 @@ import { checkToken } from "../../actions/loginauth";
 import "./styles.css";
 
 const Profile = () => {
+  checkToken();
   let history = useHistory();
 
   // will send user to account setup
   const setup = () => {
     history.push("/profilesetup");
   };
+  
+  //  const [profile, setProfile] = useState(async () => await getProfile())
+  
+  //  useEffect(async () => {
+  //   const statsData = await getStats() 
+  //   console.log(statsData) 
+  //   setStats(statsData)
+  //  }, [])
 
   return (
     <div className="body">
@@ -31,7 +40,7 @@ const Profile = () => {
       {/* will be pulled from db */}
       {/* <h5>{}</h5> */}
 
-      <h4>Favourite Quote: </h4>
+      <h4>Favourite Book: </h4>
       {/* will be pulled from db */}
       {/* <h5>{}</h5> */}
 
