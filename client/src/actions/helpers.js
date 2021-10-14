@@ -38,7 +38,7 @@ async function moveToCurrentBooks(bookId) {
 }
 
 
-async function movetoFinishedBooks(book_id, form) {
+async function movetoFinishedBooks(book_id, note, rating) {
     const username = localStorage.getItem("username")
     const options = {
         method: "PUT",
@@ -46,8 +46,7 @@ async function movetoFinishedBooks(book_id, form) {
         body: JSON.stringify({
             update:"finished",
             date_finished: formateDateNow(),
-            // user_notes: form.notes,
-            // rating: form.rating
+            user_notes: note
         })
     }
     try {

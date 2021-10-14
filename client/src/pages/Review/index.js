@@ -11,7 +11,9 @@ const Review = () => {
     e.preventDefault()
     const path = window.location.href.split('/')
     const bookId = path[4]
-    await movetoFinishedBooks(bookId)
+    const note = e.target.form[0].value
+    const rating = 0
+    await movetoFinishedBooks(bookId, note, rating)
     history.push("/completedreads");
   };
   
@@ -20,7 +22,6 @@ const Review = () => {
   return (
     <div className="body">
       <p>Add your review!</p>
-      <BookCardNoBtn />
       <form>
         <label>
           Review:

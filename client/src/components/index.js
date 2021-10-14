@@ -7,4 +7,4 @@ export { default as Rating } from "./Rating";
 export { default as Nav } from "./Nav";
 export { default as LibraryCard } from "./LibraryCard";
 export { default as CurrentReadCard } from "./CurrentReadCard"
-export { default as BookCardNoBtn } from "./BookCardNoBtn";
+export { default as CompletedBookCard } from "./CompletedBookCard";
