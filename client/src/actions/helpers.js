@@ -82,7 +82,7 @@ async function getStats() {
 
 async function getProfile() {
     const username = localStorage.getItem("username");
-    const resp = await fetch(`${localServerUrl}/profiles/${username}`)
+    const resp = await fetch(`${deployedServerUrl}/profiles/${username}/`)
     const data = await resp.json()
     return data
 }

@@ -20,7 +20,7 @@ export default function SimpleSlider() {
     // autoplay: true,
     // arrows: true,
     // centerMode: true,
-    className: "center",
+    // className: "center",
     centerMode: true,
     infinite: true,
     centerPadding: "10px",
@@ -30,27 +30,57 @@ export default function SimpleSlider() {
   return (
     <div className="slider">
       <Slider {...settings}>
-        <div className="avatar">
+        <div
+          className="avatar"
+          onClick={() => {
+            localStorage.setItem("avatar", 1);
+          }}
+        >
           <img src={Avatar1} />
         </div>
 
-        <div className="avatar">
+        <div
+          className="avatar"
+          onClick={() => {
+            localStorage.setItem("avatar", 2);
+          }}
+        >
           <img src={Avatar2} />
         </div>
 
-        <div className="avatar">
+        <div
+          className="avatar"
+          onClick={() => {
+            localStorage.setItem("avatar", 3);
+          }}
+        >
           <img src={Avatar3} />
         </div>
 
-        <div className="avatar">
+        <div
+          className="avatar"
+          onClick={() => {
+            localStorage.setItem("avatar", 4);
+          }}
+        >
           <img src={Avatar4} />
         </div>
 
-        <div className="avatar">
+        <div
+          className="avatar"
+          onClick={() => {
+            localStorage.setItem("avatar", 5);
+          }}
+        >
           <img src={Avatar5} />
         </div>
 
-        <div className="avatar">
+        <div
+          className="avatar"
+          onClick={() => {
+            localStorage.setItem("avatar", 6);
+          }}
+        >
           <img src={Avatar6} />
         </div>
       </Slider>
