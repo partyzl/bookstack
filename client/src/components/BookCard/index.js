@@ -21,9 +21,9 @@ const BookCard = ({ key, title, cover, author, genre, published }) => {
       const { data } = await axios.post(
         `https://bookstack-heroku-app.herokuapp.com/profiles/${username}/books/`,
         {
-          user_id: 4,
-          title: "",
-          author: "",
+          user_id: 3,
+          title: title,
+          author: author,
           page_num: 1,
           publish_year: 9999
         }
