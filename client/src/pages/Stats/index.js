@@ -18,10 +18,6 @@ const StatsDisplay = () => {
 
 
   return (
-<<<<<<< HEAD
-    <div className="body">
-      
-=======
     <div>
       <h1>my stats</h1>
       <div>Pages / day: {stats.pages_per_day} days</div>
@@ -30,7 +26,6 @@ const StatsDisplay = () => {
       <div>Top Genre: {stats.genres}</div>
       <div>Total Books Read: {stats.total_books_read}</div>
       <div>Favourite Era: {stats.fav_era}s</div>
->>>>>>> connecting
     </div>
   );
 };
