@@ -83,5 +83,6 @@ async function getProfile(){
     return data
 }
 
+//add getTBR back to exports
 
-export {getStats, getProfile, getTBR formatPublishYear, formateDateNow, getBooksList, moveToCurrentBooks, movetoFinishedBooks}
+export {getStats, getProfile, formatPublishYear, formateDateNow, getBooksList, moveToCurrentBooks, movetoFinishedBooks}
