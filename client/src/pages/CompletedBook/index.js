@@ -1,7 +1,5 @@
 import React from "react";
-import { BookCard } from "../../components";
-import DropDown from "../../components/Dropdown";
-import { Books } from "../../components";
+import { BookCard, Books } from "../../components";
 import { checkToken } from "../../actions/loginauth";
 
 
@@ -15,7 +13,6 @@ const CompletedBook = () => {
                 // author={book.author}
                 // cover={book.image}
             />
-            <DropDown /> 
             <input type="text" className="review" maxlength="280"/>
             <input type="submit" value="Submit"/>
         </form>
