@@ -67,7 +67,6 @@ const Search = () => {
         />
         <input className="search-btn" type="submit" value="Search" />
       </form>
-      <br />
       {books && books[0] && <Books />}
       <p>{error}</p>
     </div>

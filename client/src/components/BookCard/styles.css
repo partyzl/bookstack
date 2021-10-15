@@ -9,8 +9,8 @@
   font-family: "Raleway", sans-serif;
   overflow: hidden;
   box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 12px;
-  background-color: white;
   height: 100%;
+  max-width: 80vw;
 }
 
 h1 {
@@ -37,9 +37,14 @@ p,
   font-size: 1.75rem;
 }
 
+.card-img-top{
+  min-width: 30vw;
+
+}
+
 img {
   object-fit: contain;
-  max-height: 20vh;
+
 }
 
 .btn-light {
