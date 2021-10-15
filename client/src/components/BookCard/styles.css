@@ -1,0 +1,53 @@
+.card {
+  border: solid rgb(226, 226, 226);
+  border-radius: 20px 20px;
+  margin-top: 10px;
+  margin-bottom: 10px;
+  padding: 20px;
+  margin-left: auto;
+  margin-right: auto;
+  font-family: "Raleway", sans-serif;
+  overflow: hidden;
+  box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 12px;
+  background-color: white;
+  height: 100%;
+}
+
+h1 {
+  font-family: "Raleway", sans-serif;
+}
+
+#details {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-evenly;
+  background-color: white;
+}
+
+p,
+#card h1 {
+  background-color: white;
+}
+
+.title {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 1rem;
+  font-weight: bold;
+  font-size: 1.75rem;
+}
+
+img {
+  object-fit: contain;
+  max-height: 20vh;
+}
+
+.btn-light {
+  background-color: rgb(255, 244, 189);
+  font-size: 5vh;
+  display: flex;
+}
+
+.details {
+  font-size: 15px;
+}

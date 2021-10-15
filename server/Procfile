@@ -1,0 +1,2 @@
+web: cd bookstack && gunicorn bookstack.wsgi
+
