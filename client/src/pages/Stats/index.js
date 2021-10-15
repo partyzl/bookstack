@@ -53,7 +53,7 @@ const StatsDisplay = () => {
 
         <section class="container">
           <div class="statfact pair">
-            <p>{stats.fav_era}10</p>
+            <p>{stats.fav_era}2000s</p>
             <p class="descriptor">Favourite era </p>
           </div>
 
