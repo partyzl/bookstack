@@ -8,43 +8,26 @@ import {
 } from "../../components";
 import { useHistory } from "react-router";
 import { checkToken } from "../../actions/loginauth";
+import { movetoFinishedBooks } from "../../actions/helpers";
 
 const Review = () => {
-  const deployedServerUrl = `https://bookstack-heroku-app.herokuapp.com`;
-  const localServerUrl = "http://localhost:8000";
+  let history = useHistory();
+
   const addReview = async (e) => {
-    console.log(e);
-    try {
-      const token = localStorage.getItem("token");
-      const username = localStorage.getItem("username");
-
-      const options = {
-        method: "PUT",
-        headers: {
-          "Content-Type": "application/json",
-          Authorization: `Token ${token}`,
-        },
-        body: JSON.stringify({
-          user_notes: "This was a good book 10/10",
-          rating: 4,
-        }),
-      };
-
-      const resp = await fetch();
-      // `${deployedServerUrl}/profiles/${username}/books/${bookid}`,
-      // options
-      const data = await resp.json();
-      console.log("data", data);
-    } catch (err) {
-      console.warn(err);
-    }
+    e.preventDefault()
+    const path = window.location.href.split('/')
+    const bookId = path[4]
+    const note = e.target.form[0].value
+    const rating = 0
+    await movetoFinishedBooks(bookId, note, rating)
+    history.push("/completedreads");
   };
+  
+  checkToken()
 
-  checkToken();
   return (
     <div className="body">
       <p>Add your review!</p>
-      <BookCardNoBtn />
       <form>
         <label>
           Review:
@@ -53,12 +36,7 @@ const Review = () => {
         <Rating />
 
         <div>
-          <Button
-            type="button"
-            className={"btn btn-primary"}
-            onClick={addReview}
-            data-testid="submit-btn"
-          >
+          <Button type="button" className={"btn btn-primary"} onClick={addReview} data-testid="submit-btn">
             <i className="bi bi-plus-circle"></i> Complete review
           </Button>
         </div>

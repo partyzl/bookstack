@@ -12,6 +12,7 @@ import Avatar6 from "../../images/Avatars6.png";
 
 import { getProfile } from "../../actions/helpers"
 import "./styles.css";
+import "../Stats/styles.css";
 
 const Profile = () => {
   checkToken();
@@ -61,23 +62,25 @@ const Profile = () => {
 
       {/* username */}
 
-      <h4 className="introduction">Hello, {username}, got any new reads?</h4>
+      <h3 className="introduction">Hello, {username}</h3>
 
-      <h4>Favourite Character: </h4>
-      {/* will be pulled from db */}
-      <h5>{profile.fav_character}</h5>
+      <div class="statfact">
+        <h5>Favourite Character: </h5>
+        <h4>{profile.fav_character}Nikolai Lanstov</h4>
+      </div>
 
-      <h4>Favourite Book: </h4>
-      {/* will be pulled from db */}
-      <h5>{profile.fav_book}</h5>
+      <div class="statfact">
+        <h5>Favourite Book: </h5>
+        <h4>{profile.fav_book}The Invisible Life of Addie La Rue</h4>
+      </div>
 
-      <h4>Books currently being read: </h4>
+      <h5>Books currently being read: </h5>
       {/* <SimpleSlider /> */}
       <div className="profileBtnContainer">
         <Button
           type="submit"
           data-testid="submit-btn"
-          className={"fix btn btn-light col-sm-2 mb-3"}
+          className={"fix btn btn-light col-sm-2 mb-3 edit"}
           onClick={setup}
         >
           Edit

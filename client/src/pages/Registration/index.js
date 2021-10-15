@@ -67,6 +67,17 @@ const Registration = () => {
   return (
     <div className="body">
       {/* <Header /> */}
+      <p className="title">
+        <span className="color1">R</span>
+        <span className="color2">e</span>
+        <span className="color3">g</span>
+        <span className="color4">i</span>
+        <span className="color1">s</span>
+        <span className="color2">t</span>
+        <span className="color3">e</span>
+        <span className="color4">r</span>
+      </p>
+
       <form onSubmit={registerSubmit}>
         <input
           type="text"
@@ -78,7 +89,7 @@ const Registration = () => {
           }}
           required
         />
-        <br />
+      
         <input
           type="text"
           placeholder="Enter email"
@@ -89,7 +100,7 @@ const Registration = () => {
             setEmail(e.target.value);
           }}
         />
-        <br />
+        
         <input
           type="password"
           placeholder="Password"
@@ -100,7 +111,7 @@ const Registration = () => {
           }}
           required
         />
-        <br />
+        
         <input
           type="password"
           placeholder="Re-enter password"
@@ -110,15 +121,16 @@ const Registration = () => {
             setConfirmPassword(e.target.value);
           }}
         />
-        <Button
+
+      {/* :eaving a weird tiny blank button - whats it for?  */}
+        {/* <Button
           type="submit"
           className={"btn btn-light col-sm-2 mb-3"}
           // onClick={setup}
           onClick={requestRegistration}
-        ></Button>
+        ></Button> */}
         {error && (
           <>
-            <br />
             <p>{error}</p>
           </>
         )}

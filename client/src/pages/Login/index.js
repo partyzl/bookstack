@@ -50,6 +50,16 @@ const Login = () => {
   return (
     <div className="body">
       {/* <Header /> */}
+
+      <p className="title">
+        <span className="color1">L</span>
+        <span className="color2">o</span>
+        <span className="color3">g</span>
+        <span className="color4">i</span>
+        <span className="color1">n</span>
+        
+      </p>
+
       <form>
         <input
           type="text"
@@ -57,9 +67,8 @@ const Login = () => {
           id="username"
           name="username"
         />
-        <br />
-        {/* <input type="text" placeholder="Enter email" name="email" />
-        <br /> */}
+
+
         <input
           type="password"
           placeholder="Password"
@@ -75,15 +84,20 @@ const Login = () => {
           Login
         </Button>
       </form>
-      <Button
-        type="button"
-        className={"fix btn btn-light col-sm-2 mb-3"}
-        onClick={register}
-      >
-        Register
-      </Button>
-      <p>Don't have an account? Why not register here!</p>
-    </div>
+      
+        <p>Don't have an account?</p>
+        <div class="container">
+          <Button
+            type="button"
+            className={"fix btn btn-light col-sm-2 mb-3"}
+            id="register"
+            onClick={register}
+          >
+            Register
+          </Button>
+        </div>
+      </div>
+
   );
 };
 
