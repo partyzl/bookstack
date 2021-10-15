@@ -6,12 +6,14 @@ import { getBooksList } from "../../actions/helpers";
 const CurrentReads = () => {
 
   checkToken()
-  
+
   const [currentBookElements, setCurrentBookElements] = useState([])
 
   useEffect(async () => {
     const currentList = await getBooksList("current")
-    const current = currentList.map((book) => <CurrentReadCard key={book.id} title={book.title} cover={book.cover} author={book.author}/>)
+    const current = currentList.map((book) => {
+      return <CurrentReadCard book_id={book.id} title={book.title} cover={book.cover} author={book.author} />
+    })
     setCurrentBookElements(current)
   }, [])
 
